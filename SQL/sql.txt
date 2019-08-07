@@ -1,0 +1,29 @@
+-- Connexion à la BDD --
+mysql -u root -p
+--- Afficher les BDD ---
+SHOW DATABASES;
+--- Créer une BDD ---
+CREATE DATABASE nom_de_la_BDD;
+--- Sélectionner une BDD ---
+USE nom_de_la_bdd;
+-- Création d'une TABLE dans la BDD --
+-- Type de donnée (INT, VARCHAR, TEXT, FLOAT...) --
+CREATE TABLE fruit -(id_fruit INT(3), nom VACHAR(60), origine VARCHAR(50), calibre  INT(1), prix FLOAT, catégorie VARCHAR(20));    calibre (1) c'est 1 unité de 0-9.
+-- Afficher toutes les tables --
+SHOW TABLES;
+-- Insertion dans la BDD --
+INSERT INTO nom_de_la_TABLE ('1',  ' pomme', 'origine', 'France',  '5', '12.50', 'Golden');
+-- Sélectionner toutes les données d'une table --
+SELECT *FROM nom_de_la_table;
+
+-- Séléctionner les données d'une ou plueirus colonnes sépcifiques d'une table--
+SELDCT nom_de_lacolonne, nom_del_lacolonne FROM nom_de_la_table;
+
+-- Supprimer une ligne de la table avec une condition --
+DELETE FROM nom_de_la_table WHERE condition;
+-- Supprimer tout le contenu d'une table --
+DELETE FROM nom_de_la_table;  /!\ si vous faite celà vous effacerez tout le contenu de la table /!\
+-- METTRE à jour une  colonne d'une table --
+UPDATE nom_de_la_rable SET nom_colonne condition;
+ex: UPDATE fruits SET calibre =  '7'  WHERE id_fruit =  '2' ;
+

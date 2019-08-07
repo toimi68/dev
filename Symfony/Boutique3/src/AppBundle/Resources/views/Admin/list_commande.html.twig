@@ -1,0 +1,53 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Boutique - commande {% endblock %}
+    
+{# <h1 class="display-4 text-center">LISTE DES COMMANDES</h1><hr>
+
+ <div class="row m-4">
+
+        <a href="{{ path('inscription') }}" class="btn btn-primary">Ajouter une commande</a>
+
+    </div>  #}
+
+{% block content %}
+
+    
+  <table class="table table-bordered">
+         <thead>
+            <tr>
+                <th>Id</th>
+                <th>Montant</th>
+                <th>Date</th>
+                <th>Membre</th>
+                <th>Etat</th>
+                <th colspan="3">Action</th>
+            </tr>
+         </thead>
+            <tbody>
+
+                {% for c in commandes %}
+                    <tr>
+                        <td>{{ c.id}} </td>
+                        <td>{{ c.montant | number_format(2, ',', ' ' ) }} </td>
+                        <td>{{ c.dateEnregistrement | date("d/m/Y H:i:s") }} </td>
+                        <td>
+                            {{ c.membreId.id }} 
+                        </td>
+                        <td>
+                        {% if c.etat == 0 %}<strong style="color:red">En cours de traitement</strong>
+                        {% elseif c.etat == 1 %}<strong style="color:orange">En cours de livraison</strong>
+                        {% elseif c.etat == 2 %}<strong style="color:lightgreen">Livrée</strong>
+                        {% else %} <strong>Autre</strong>
+                        {% endif %}
+                        </td>
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+    </table>
+
+
+{% endblock %}
+
+

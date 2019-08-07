@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Lien Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  
+<title> AJAX EXO</title>
+
+</head>
+<body>
+   <div class="container">
+      <h1 class="display-4 text-center">AJAX EXO </h1><hr>
+      <button type="button" id="action" class="col-md-4 offset-md-4 btn btn-dark text-center">Afficher</button>
+        <div id="resultat">
+
+          
+        </div>
+        
+            <div id="message"></div>
+
+      <form class="col-md-4 offset-md-4" id="form1" method="post">
+
+                 
+              
+                <div class="form-row">
+                 <div class="form-group col-md-6">
+                  <label for="reference">Réference</label>
+                  <input type="text" class="form-control" id="reference" name="reference" placeholder="Enter la reference" value="">
+                 </div>
+
+                  <div class="form-group col-md-6">
+                  <label for="categorie">Catégorie</label>
+                  <input type="text" class="form-control" id="categorie" name="categorie" placeholder="Enter la catégorie"
+                  value="">
+                  </div>
+
+                  <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for=titre>Titre</label>
+                    <input type="text" class="form-control" id="titre" name="titre" placeholder="Enter titre" value="">
+                  </div> 
+
+                <div class="form-group col-md-6">
+                 <div class="form-group">
+                  <label for="description">Description</label>
+                  <input type="text" class="form-control" id="description" name="description" placeholder="Entrer description"
+                    value="">
+                 </div>
+                </div>
+                
+                 <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="couleur">Couleur</label>
+                    <input type="text" class="form-control" id="couleur" name="couleur" placeholder="Enter couleur"
+                      value="">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="taille">Taille</label>
+                    <select id="taille" class="form-control" name="taille">
+                      <option selected>Choose...</option>
+                      <option value="s">S</option>
+                      <option value="m">M</option>
+                      <option value="l">L</option>
+                      <option value="xl">XL</option>
+                    </select>
+                   </div>
+                  </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="public">Public</label>
+                    <select class="form-control" id="public" name="public">
+                      <option selected>Choose...</option>
+                      <option value="m">Homme</option>
+                      <option value="f">Femme</option>
+                      <option value="mixte">Mixte</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="photo">Photo</label>
+                    <input type="file" class="form-control" id="photo" name="photo">
+                  </div>
+                  <em>Vous pouvez uploader une nouvelle photo si vous souhaitez la changer</em><br>
+                  <img src="" alt="" class="card-img-top">
+                  <input type="hidden" id="photo_actuelle" name="photo_actuelle" value="">
+                </div>
+                
+                <div class='form-row'>
+                  <div class="form-group col-md-6">
+                    <label for="prix">Prix</label>
+                    <input type="text" class="form-control" id="prix" name="prix" placeholder="Enter prix" value="">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="stock">Stock</label>
+                    <input type="text" class="form-control" id="stock" name="stock" placeholder="Enter stock" value="">
+                  </div>
+                </div>
+                  
+              </form>
+              
+              <button type="button" id="submit" class="col-md-4 offset-md-4 btn btn-dark text-center">Valider</button>
+<!-- CDN Jquery-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<!-- lien de notre fichier JS -->
+<script src="ajax_exo.js"></script>
+              
+</body>
+</html>

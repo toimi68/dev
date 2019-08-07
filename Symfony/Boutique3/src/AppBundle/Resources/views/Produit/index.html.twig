@@ -1,0 +1,66 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Boutique - Accueil {% endblock %}
+
+
+{% block content %}
+
+{# {{ dump(categories) }} #}
+
+<div class="row col-12 p-5">
+
+
+    <!--  Menu des catégorie -->
+        <div class="col-lg-3">
+            <div class="list-group mb-4">
+            
+                <a href="{{ path('homepage') }}" class=" text text-light bg-dark list-group-item">Tous les produits</a>
+
+                {% for cat in categories %}
+
+                    <a href="{{ path('categorie', {'cat' : cat.categorie}) }}" class="text-dark list-group-item">{{ cat.categorie}}
+                    </a>
+
+                {% endfor %}
+            </div>         
+        </div>
+
+
+        <!-- Espace principal  -->
+        <div class="col-lg-9">
+            <div class="row">
+
+
+                {% for pdt in produits %}
+                <!-- Debut Vignette Produit -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+
+                        <a href="{{ path('produit', {'id': pdt.id } ) }}"><img class="card-img-top" src="{{ asset('photo/' ~ pdt.photo ) }}" alt=""></a>
+    
+                        <div class="card-body">
+                        <h4 class="card-title text-center">
+                            <a href="" class="alert-link text-dark">{{ pdt.titre }}</a>
+                        </h4>
+                        <h5 class="text-center">{{ pdt.prix }} €</h5>
+                        <p class="card-text text-center">{{ pdt.description }}</p>
+                        </div>
+                        <div class="card-footer text-center">
+                        <a href="" class="alert-link text-dark">Voir le détail&nbsp;&nbsp;<i class="fas fa-search"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Vignette Produit -->
+                {% endfor %}
+
+
+
+            
+            </div>
+        </div>
+</div>	
+
+
+
+
+
+{% endblock %}

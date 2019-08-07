@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Lien Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Lien de notre fichier style CSS -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <title>{% block title %}Boutique {% endblock %}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Ma BouTique De OUFFF!!!!</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample04">
+        <ul class="navbar-nav mr-auto">
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# si le visiteur est connecté (peu importe le niveau de role) #}
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('homepage') }}">Boutique</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('profil')}}">Profil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Panier</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('deconnexion') }}">Deconnexion</a>
+            </li>
+            
+        {% else %}
+
+            <li class="nav-item">
+                <a class="nav-link" href="">Boutique</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('inscription')}}">Inscription</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('connexion')}}">Connexion</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Panier</a>
+            </li>
+
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') %}  
+          
+        	<li class="dropdown">	
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Admin
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<li><a class="dropdown-item" href="{{ path('admin_produit')}}"><i class="fas fa-box-open"></i>&nbsp;Gestion Produit</a></li>
+				<li><a class="dropdown-item" href="{{ path('admin_membre')}}"><i class="fas fa-user-friends"></i>&nbsp;Gestion Membre</a></li>
+				<li><a class="dropdown-item" href="{{ path('admin_commande')}}"><i class="fas fa-shopping-cart"></i>&nbsp;Gestion Commande</a></li>
+			</ul>
+	    	</li> 
+        {% endif %}
+       
+
+        </ul>
+        <form class="form-inline my-2 my-md-0">
+        <input class="form-control" type="text" placeholder="Search">
+        </form>
+    </div>
+    </nav>
+
+    <section class="container mon-conteneur">
+		<div class="row form1">
+
+		{% for message in app.session.flashbag.get('success')%}
+            <div class="alert alert-success">
+                {{ message }}
+                </div>
+            {% endfor %}
+
+            {% for message in app.session.flashbag.get('errors')%}
+               <div class="alert alert-danger">
+                {{ message }}
+                </div>
+			{% endfor %}
+
+
+			{% block content %}
+			{% endblock %}
+
+
+		</div>
+		<!-- /.row -->
+	</section>
+
+    <footer class="bg-dark text-white text-center fixed-bottom mt-4 ">
+        &copy; 2019 - GL - Pas touche c'est mon site à moi !!! 
+    </footer>
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

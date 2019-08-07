@@ -1,0 +1,32 @@
+/*   
+Theme Name: Portfolio
+Theme URI: http://localhost/portfolio/wp-content/themes/Portfolio
+Description: Portfolio developpeur WEB
+Author: Grégory LACROIX
+Author URI: http://localhost/portfolio
+Version: 1.0
+*/
+
+body{
+    background: #EBEAE8;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.hauteur{
+    min-height: 150px;
+}
+
+.h-entetes{
+    min-height: 200px;
+}
+
+.ma-section{
+    min-height: 600px;
+}
+
+
+
+

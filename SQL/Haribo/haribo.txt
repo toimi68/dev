@@ -1,0 +1,471 @@
+Setting environment for using XAMPP for Windows.
+Etudiant@MININT-09VIMME c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 27
+Server version: 10.1.31-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> USE haroibo
+ERROR 1049 (42000): Unknown database 'haroibo'
+MariaDB [(none)]> USE haribo
+Database changed
+MariaDB [haribo]> SELECT nom,prenom, quantite FROM manger AS m, bonbons AS b, stagiaires AS s WHERE s.id_stagiaire = m.id_stagiaire AND b.id_bonbon = m.id_bonbon;
++------------+-----------+----------+
+| nom        | prenom    | quantite |
++------------+-----------+----------+
+| Tagada     | Sabuj     |       10 |
+| Tagada     | Layla     |       18 |
+| Tagada     | Patrick   |        5 |
+| nounours   | jhordan   |        5 |
+| chamallow  | Arnaud    |        5 |
+| chamallow  | Luc       |       18 |
+| chamallow  | jhordan   |       12 |
+| chamallow  | Mohamed   |        5 |
+| schtroumpf | Johnathan |       24 |
++------------+-----------+----------+
+9 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom, nom, date_manger FROM stagiaires AS s,manger AS m,bonbons AS b WHERE s.id_stagiaire = m.id_stagiaire AND b.id_bonbon = m.id_bonbon;
++-----------+------------+-------------+
+| prenom    | nom        | date_manger |
++-----------+------------+-------------+
+| Sabuj     | Tagada     | 2018-09-10  |
+| Layla     | Tagada     | 2018-09-05  |
+| Patrick   | Tagada     | 2019-09-15  |
+| jhordan   | nounours   | 2018-09-18  |
+| Arnaud    | chamallow  | 2018-09-20  |
+| Luc       | chamallow  | 2018-09-01  |
+| jhordan   | chamallow  | 2018-06-10  |
+| Mohamed   | chamallow  | 2018-07-24  |
+| Johnathan | schtroumpf | 2018-08-25  |
++-----------+------------+-------------+
+9 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom, nom, date_manger FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bonbons.id_bonbon AND manger.id_stagiaire = stagiaires.id_stagiaire ;
++-----------+------------+-------------+
+| prenom    | nom        | date_manger |
++-----------+------------+-------------+
+| Sabuj     | Tagada     | 2018-09-10  |
+| Layla     | Tagada     | 2018-09-05  |
+| Patrick   | Tagada     | 2019-09-15  |
+| jhordan   | nounours   | 2018-09-18  |
+| Arnaud    | chamallow  | 2018-09-20  |
+| Luc       | chamallow  | 2018-09-01  |
+| jhordan   | chamallow  | 2018-06-10  |
+| Mohamed   | chamallow  | 2018-07-24  |
+| Johnathan | schtroumpf | 2018-08-25  |
++-----------+------------+-------------+
+9 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom, nom, quantité FROM stagiaires AS s,manger AS m,bonbons AS b WHERE s.id_stagiaire = m.id_stagiaire AND b.id_bonbon = m.id_bonbon;
+ERROR 1054 (42S22): Unknown column 'quantité' in 'field list'
+MariaDB [haribo]> SELECT prenom, nom, quantité FROM stagiaires AS s,manger AS m,bonbons AS b WHERE s.id_stagiaire = m.id_stagiaire AND b.id_bonbon = m.id_bonbon;
+ERROR 1054 (42S22): Unknown column 'quantité' in 'field list'
+MariaDB [haribo]> SELECT prenom, nom, quantite FROM stagiaires AS s,manger AS m,bonbons AS b WHERE s.id_stagiaire = m.id_stagiaire AND b.id_bonbon = m.id_bonbon;
++-----------+------------+----------+
+| prenom    | nom        | quantite |
++-----------+------------+----------+
+| Sabuj     | Tagada     |       10 |
+| Layla     | Tagada     |       18 |
+| Patrick   | Tagada     |        5 |
+| jhordan   | nounours   |        5 |
+| Arnaud    | chamallow  |        5 |
+| Luc       | chamallow  |       18 |
+| jhordan   | chamallow  |       12 |
+| Mohamed   | chamallow  |        5 |
+| Johnathan | schtroumpf |       24 |
++-----------+------------+----------+
+9 rows in set (0.00 sec)
+
+MariaDB [haribo]>  SELECT prenom, nom, quantite FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bonbons.id_bonbon AND manger.id_stagiaire = stagiaires.id_stagiaire ;
++-----------+------------+----------+
+| prenom    | nom        | quantite |
++-----------+------------+----------+
+| Sabuj     | Tagada     |       10 |
+| Layla     | Tagada     |       18 |
+| Patrick   | Tagada     |        5 |
+| jhordan   | nounours   |        5 |
+| Arnaud    | chamallow  |        5 |
+| Luc       | chamallow  |       18 |
+| jhordan   | chamallow  |       12 |
+| Mohamed   | chamallow  |        5 |
+| Johnathan | schtroumpf |       24 |
++-----------+------------+----------+
+9 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom, nom, quantite FROM stagiaires AS s,manger AS m,bonbons AS b WHERE s.id_stagiaire = m.id_stagiaire AND b.id_bonbon = m.id_bonbon AND  quantite >0;
++-----------+------------+----------+
+| prenom    | nom        | quantite |
++-----------+------------+----------+
+| Sabuj     | Tagada     |       10 |
+| Layla     | Tagada     |       18 |
+| Patrick   | Tagada     |        5 |
+| jhordan   | nounours   |        5 |
+| Arnaud    | chamallow  |        5 |
+| Luc       | chamallow  |       18 |
+| jhordan   | chamallow  |       12 |
+| Mohamed   | chamallow  |        5 |
+| Johnathan | schtroumpf |       24 |
++-----------+------------+----------+
+9 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom, nom, quantite FROM stagiaires AS s,manger AS m,bonbons AS b WHERE s.id_stagiaire = m.id_stagiaire AND b.id_bonbon = m.id_bonbon AND  quantite >0;
++-----------+------------+----------+
+| prenom    | nom        | quantite |
++-----------+------------+----------+
+| Sabuj     | Tagada     |       10 |
+| Layla     | Tagada     |       18 |
+| jhordan   | nounours   |        5 |
+| Arnaud    | chamallow  |        5 |
+| Luc       | chamallow  |       18 |
+| jhordan   | chamallow  |       12 |
+| Mohamed   | chamallow  |        5 |
+| Johnathan | schtroumpf |       24 |
++-----------+------------+----------+
+8 rows in set (0.00 sec)
+
+MariaDB [haribo]>  SELECT prenom, nom, quantite FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bonbons.id_bonbon AND manger.id_stagiaire = stagiaires.id_stagiaire AND quantite >0;
++-----------+------------+----------+
+| prenom    | nom        | quantite |
++-----------+------------+----------+
+| Sabuj     | Tagada     |       10 |
+| Layla     | Tagada     |       18 |
+| jhordan   | nounours   |        5 |
+| Arnaud    | chamallow  |        5 |
+| Luc       | chamallow  |       18 |
+| jhordan   | chamallow  |       12 |
+| Mohamed   | chamallow  |        5 |
+| Johnathan | schtroumpf |       24 |
++-----------+------------+----------+
+8 rows in set (0.00 sec)
+
+MariaDB [haribo]>  SELECT prenom, nom, quantite FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bonbons.id_bonbon AND manger.id_stagiaire = stagiaires.id_stagiaire AND quantite >0;
++---------+-----------+----------+
+| prenom  | nom       | quantite |
++---------+-----------+----------+
+| Sabuj   | Tagada    |       10 |
+| Layla   | Tagada    |       18 |
+| jhordan | nounours  |        5 |
+| Arnaud  | chamallow |        5 |
+| Luc     | chamallow |       18 |
+| jhordan | chamallow |       12 |
+| Mohamed | chamallow |        5 |
++---------+-----------+----------+
+7 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT .quantite, COUNT(*) AS nb_conso, s.prenom FROM manger m INNER JOIN stagiaire s ON m.id_stagiaire = s.id_stagiaire GROUP BY s.prenom;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' COUNT(*) AS nb_conso, s.prenom FROM manger m INNER JOIN stagiaire s ON m.id_sta' at line 1
+MariaDB [haribo]> SELECT m.quantite, COUNT(*) AS nb_conso, s.prenom FROM manger m INNER JOIN stagiaire s ON m.id_stagiaire = s.id_stagiaire GROUP BY s.prenom;
+ERROR 1146 (42S02): Table 'haribo.stagiaire' doesn't exist
+MariaDB [haribo]> SELECT m.quantite, COUNT(*) AS nb_conso, s.prenom FROM manger m INNER JOIN stagiaire s ON m.id_stagiaire = s.id_stagiaire GROUP BY s.prenom;
+ERROR 1146 (42S02): Table 'haribo.stagiaire' doesn't exist
+MariaDB [haribo]> SELECT m.quantite, COUNT(*) AS nb_conso, s.prenom FROM manger m INNER JOIN stagiaires s ON m.id_stagiaire = s.id_stagiaire GROUP BY s.prenom;
++----------+----------+-----------+
+| quantite | nb_conso | prenom    |
++----------+----------+-----------+
+|        5 |        1 | Arnaud    |
+|        5 |        2 | jhordan   |
+|        0 |        1 | Johnathan |
+|       18 |        1 | Layla     |
+|       18 |        1 | Luc       |
+|        5 |        1 | Mohamed   |
+|        0 |        1 | Patrick   |
+|       10 |        1 | Sabuj     |
++----------+----------+-----------+
+8 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT SUM(quantite) FROM manger;
++---------------+
+| SUM(quantite) |
++---------------+
+|            73 |
++---------------+
+1 row in set (0.00 sec)
+
+MariaDB [haribo]> SELECT COUNT('tagada') FROM bonbons;
++-----------------+
+| COUNT('tagada') |
++-----------------+
+|               6 |
++-----------------+
+1 row in set (0.00 sec)
+
+MariaDB [haribo]> SELECT SUM('tagada') FROM bonbons;
++---------------+
+| SUM('tagada') |
++---------------+
+|             0 |
++---------------+
+1 row in set, 6 warnings (0.00 sec)
+
+MariaDB [haribo]> SELECT SUM(quantite) FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bonbons.id_bonbon AND manger.id_stagiaire = stagiaires.id_stagiaire AND nom = 'tagada' ;
++---------------+
+| SUM(quantite) |
++---------------+
+|            28 |
++---------------+
+1 row in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom FROM stagiaires s,bonbon b, manger m, WHERE m.id_bonbon = b.id_bonbon AND m.id_stagiaire = s.id_stagiaire AND quantite < 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE m.id_bonbon = b.id_bonbon AND m.id_stagiaire = s.id_stagiaire AND quantite' at line 1
+MariaDB [haribo]> SELECT prenom FROM stagiaires s, bonbon b, manger m, WHERE m.id_bonbon = b.id_bonbon AND m.id_stagiaire = s.id_stagiaire AND quantite < 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE m.id_bonbon = b.id_bonbon AND m.id_stagiaire = s.id_stagiaire AND quantite' at line 1
+MariaDB [haribo]> SELECT prenom FROM stagiaires s, bonbon b, manger m WHERE m.id_bonbon = b.id_bonbon AND m.id_stagiaire = s.id_stagiaire AND quantite < 1;
+ERROR 1146 (42S02): Table 'haribo.bonbon' doesn't exist
+MariaDB [haribo]> SELECT prenom FROM stagiaires s, bonbons b, manger m WHERE m.id_bonbon = b.id_bonbon AND m.id_stagiaire = s.id_stagiaire AND quantite < 1;
++-----------+
+| prenom    |
++-----------+
+| Johnathan |
+| Patrick   |
++-----------+
+2 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom FROM stagiaires s, bonbons b, manger m WHERE m.id_bonbon = b.id_bonbon AND m.id_stagiaire = s.id_stagiaire AND quantite < 1;
++-----------+
+| prenom    |
++-----------+
+| Johnathan |
+| Patrick   |
++-----------+
+2 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT DISTINCT saveur FROM bonbons;
++-----------+
+| saveur    |
++-----------+
+| cola      |
+| fraise    |
+| citron    |
+| framboise |
+| acidulé   |
+| vanille   |
++-----------+
+6 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom, MAX(quantite) FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bonbons.id_bonbon AND manger.id_stagiaire = stagiaires.id_stagiaire ;
++--------+---------------+
+| prenom | MAX(quantite) |
++--------+---------------+
+| Arnaud |            18 |
++--------+---------------+
+1 row in set (0.00 sec)
+
+MariaDB [haribo]> SELECT s.prenom FROM stagiaires s LEFT JOIN manger m ON s.id_stagiaire = m.id_stagiaire WHERE m.quantite = (SELECT MAX(quantite) FROM manger);
++--------+
+| prenom |
++--------+
+| Layla  |
+| Luc    |
++--------+
+2 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom, MAX(quantite) FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bonbons.id_bonbon AND manger.id_stagiaire = stagiaires.id_stagiaire ;
++--------+---------------+
+| prenom | MAX(quantite) |
++--------+---------------+
+| Arnaud |            18 |
++--------+---------------+
+1 row in set (0.00 sec)
+
+MariaDB [haribo]> SELECT s.prenom FROM stagiaires s LEFT JOIN manger m ON s.id_stagiaire = m.id_stagiaire WHERE m.quantite = (SELECT MAX(quantite) FROM manger);
++--------+
+| prenom |
++--------+
+| Layla  |
+| Luc    |
++--------+
+2 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT s.prenom FROM stagiaires s LEFT JOIN manger m ON s.id_stagiaire = m.id_stagiaire WHERE m.quantite = (SELECT MAX(quantite) FROM manger);
++-----------+
+| prenom    |
++-----------+
+| Johnathan |
++-----------+
+1 row in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom, MAX(quantite) FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bonbons.id_bonbon AND manger.id_stagiaire = stagiaires.id_stagiaire ;
++--------+---------------+
+| prenom | MAX(quantite) |
++--------+---------------+
+| Arnaud |            24 |
++--------+---------------+
+1 row in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom, FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bonbons.id_bonbon AND manger.id_stagiaire = stagiaires.id_stagiaire and max(quantite);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bo' at line 1
+MariaDB [haribo]> SELECT prenom, FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bonbons.id_bonbon AND manger.id_stagiaire = stagiaires.id_stagiaire and MAX(quantite);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bo' at line 1
+MariaDB [haribo]> SELECT prenom, FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bonbons.id_bonbon AND manger.id_stagiaire = stagiaires.id_stagiaire;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bo' at line 1
+MariaDB [haribo]> SELECT s.prenom FROM stagiaires s LEFT JOIN manger m ON s.id_stagiaire = m.id_stagiaire WHERE m.quantite = (SELECT MAX(quantite) FROM manger);
++-----------+
+| prenom    |
++-----------+
+| Johnathan |
++-----------+
+1 row in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom, MAX(manger,quantite) FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_bonbon = bonbons.id_bonbon AND manger.id_stagiaire = stagiaires.id_stagiaire;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'quantite) FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_b' at line 1
+MariaDB [haribo]> SELECT s.prenom FROM stagiaires s LEFT JOIN manger m ON s.id_stagiaire = m.id_stagiaire WHERE m.quantite = (SELECT MAX(quantite) FROM manger);
++-----------+
+| prenom    |
++-----------+
+| Johnathan |
++-----------+
+1 row in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom, MAX(quantite) FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_stagiaire = stagiaires.id_stagiaire;
++--------+---------------+
+| prenom | MAX(quantite) |
++--------+---------------+
+| Arnaud |            24 |
++--------+---------------+
+1 row in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom,quantite MAX(quantite) FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_stagiaire = stagiaires.id_stagiaire;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'MAX(quantite) FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.' at line 1
+MariaDB [haribo]> SELECT s.prenom,quantite FROM stagiaires s LEFT JOIN manger m ON s.id_stagiaire = m.id_stagiaire WHERE m.quantite = (SELECT MAX(quantite) FROM manger);
++-----------+----------+
+| prenom    | quantite |
++-----------+----------+
+| Johnathan |       24 |
++-----------+----------+
+1 row in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom,MAX(quantite) FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_stagiaire = stagiaires.id_stagiaire;
++--------+---------------+
+| prenom | MAX(quantite) |
++--------+---------------+
+| Arnaud |            24 |
++--------+---------------+
+1 row in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom,(quantite) FROM stagiaires INNER JOIN bonbons INNER JOIN manger WHERE manger.id_stagiaire = stagiaires.id_stagiaire;
++-----------+----------+
+| prenom    | quantite |
++-----------+----------+
+| Arnaud    |        5 |
+| Arnaud    |        5 |
+| Arnaud    |        5 |
+| Arnaud    |        5 |
+| Arnaud    |        5 |
+| Arnaud    |        5 |
+| Sabuj     |       10 |
+| Sabuj     |       10 |
+| Sabuj     |       10 |
+| Sabuj     |       10 |
+| Sabuj     |       10 |
+| Sabuj     |       10 |
+| jhordan   |        5 |
+| jhordan   |        5 |
+| jhordan   |        5 |
+| jhordan   |        5 |
+| jhordan   |        5 |
+| jhordan   |        5 |
+| Layla     |       18 |
+| Layla     |       18 |
+| Layla     |       18 |
+| Layla     |       18 |
+| Layla     |       18 |
+| Layla     |       18 |
+| Luc       |       18 |
+| Luc       |       18 |
+| Luc       |       18 |
+| Luc       |       18 |
+| Luc       |       18 |
+| Luc       |       18 |
+| Johnathan |       24 |
+| Johnathan |       24 |
+| Johnathan |       24 |
+| Johnathan |       24 |
+| Johnathan |       24 |
+| Johnathan |       24 |
+| jhordan   |       12 |
+| jhordan   |       12 |
+| jhordan   |       12 |
+| jhordan   |       12 |
+| jhordan   |       12 |
+| jhordan   |       12 |
+| Mohamed   |        5 |
+| Mohamed   |        5 |
+| Mohamed   |        5 |
+| Mohamed   |        5 |
+| Mohamed   |        5 |
+| Mohamed   |        5 |
+| Patrick   |        0 |
+| Patrick   |        0 |
+| Patrick   |        0 |
+| Patrick   |        0 |
+| Patrick   |        0 |
+| Patrick   |        0 |
++-----------+----------+
+54 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT s.prenom,quantite FROM stagiaires s LEFT JOIN manger m ON s.id_stagiaire = m.id_stagiaire WHERE m.quantite = (SELECT MAX(quantite) FROM manger);
++-----------+----------+
+| prenom    | quantite |
++-----------+----------+
+| Johnathan |       24 |
++-----------+----------+
+1 row in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom,quantite FROM stagiaires INER JOIN manger WHERE manger.id_staigiaire = stagiaires.id_stagiaire;
+ERROR 1054 (42S22): Unknown column 'manger.id_staigiaire' in 'where clause'
+MariaDB [haribo]>
+MariaDB [haribo]> SELECT prenom,quantite FROM stagiaires INNER JOIN manger WHERE manger.id_stagiaire = stagiaires.id_stagiaire;
++-----------+----------+
+| prenom    | quantite |
++-----------+----------+
+| Arnaud    |        5 |
+| Sabuj     |       10 |
+| jhordan   |        5 |
+| Layla     |       18 |
+| Luc       |       18 |
+| Johnathan |       24 |
+| jhordan   |       12 |
+| Mohamed   |        5 |
+| Patrick   |        0 |
++-----------+----------+
+9 rows in set (0.00 sec)
+
+MariaDB [haribo]> SELECT prenom,bonbons FROM stagiaires INNER JOIN bonbons WHERE bonbons.id_bonbon = manger.id_bonbon;
+ERROR 1054 (42S22): Unknown column 'bonbons' in 'field list'
+MariaDB [haribo]> SELECT prenom,nom FROM stagiaires INNER JOIN bonbons WHERE bonbons.id_bonbon = manger.id_bonbon;
+ERROR 1054 (42S22): Unknown column 'manger.id_bonbon' in 'where clause'
+MariaDB [haribo]> Bye
+
+Etudiant@MININT-09VIMME c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 1330
+Server version: 10.1.31-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> USE haribo
+Database changed
+MariaDB [haribo]> SELECT prenom,nom FROM stagiaires INNER JOIN bonbons WHERE bonbons.id_bonbon = stagiaires.id_stagiaire;
++-----------+------------+
+| prenom    | nom        |
++-----------+------------+
+| jhordan   | dragibus   |
+| Layla     | Tagada     |
+| Luc       | nounours   |
+| Sabuj     | chamallow  |
+| Mohamed   | schtroumpf |
+| Johnathan | chamallow  |
++-----------+------------+
+6 rows in set (0.00 sec)
+
+MariaDB [haribo]>

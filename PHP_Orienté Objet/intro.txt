@@ -1,0 +1,58 @@
+---------------------ORIENTE OBJET:
+
+-------------------- INCONVENIENTS :
+- Techniquement, on ne peut rien faire de plus avec l'orienté objet qu'avec le procédural.
+- En général, l'approche orienté objet est moins intuitive que l'approche procédural pour l'esprit humain
+- Légère perte de performance (pouvant être amélioré par divers moyen d'utilisation)
+
+-------------------AVANTAGES :
+- Modulariser afin d'avoir un code evolutif.
+- Encourager le travail collaboratif
+- Masquer la complexité du code grace au principe d'encapsulation ( tout le code  on le met ds une méthode,fonction concret)
+- La ré-utilisation du code ne pas repartir de zéro, on va effectuer un code type (générique) pouvant être repris sur d'autres projets.
+C'est ce que donne des modules sur WORDPRESS, c'est aussi comme celà que sont nés les framework
+- Simplifier la maintenance / la mise à jour
+- assouplir, factoriser le code, meilleure conceptualisation
+- Plus d'option dans le langage (héritage, surchage, abstraction, finalisation etc...)
+- Cela vous permettra de passer plus facilement sur l'appréhension d'autres technologies, java, .net, c#, c++ etc...
+
+Conclusion : Vous n'aurez pas besoin d'orienté objet par exemple 'boutique ecommerce' réalisé en procédural mais pour tout les projets de grandes envergures, avec des équipes de développement, mais à jour régulièrement.
+l'orient objet permet de ranger notre code.
+
+class Membre
+{
+    $pseudo, $mpd;
+    public function seConnecter(){};
+    public function sInscrire(){};
+}
+class Panier
+{
+    $nbPorduit, $ prix;
+    public fonction ajouterArticleDansPanier(){};
+    public function retireArticleDansPanier(){};
+}
+class PDO 
+{
+    public function query(){}
+    public function prepare(){}
+    public function exec(){}
+}
+
+- Une classe est un regroupement d'information / de données que l'on peut comparer à un plan de construction
+- Pour pouvoir utuliser les données déclarées dans la classe, nous devons instancier la classe 'Panier' afin d'en créer un objet, c'est à dire u, exemplaire de la classe. L'objet permet d'atteindre et d'utiliser des fonctionnalités déclarées dans la classe
+
+il faudra au préalable créer variable de la class, exemple ici : 
+
+$panier1 = new Panier;
+$panier1 ->ajouterArticleDansPanier();
+
+--------VOCABULAIRE
+Variable = propriété = attribut
+Fonction = méthodeinstance = objet
+
+Une class permet de contenir des variables, avec des informations ainsi que des méthodes comportant des traitements.
+Une class est un regroupement d'informations (Plan, modèle)
+objet = application du plan
+
+
+

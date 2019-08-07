@@ -1,0 +1,757 @@
+# mysql -u root -p
+
+
+
+Enter password:
+
+
+
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+
+
+
+Your MariaDB connection id is 214
+
+
+
+Server version: 10.1.31-MariaDB mariadb.org binary distribution
+
+
+
+
+
+
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+
+
+
+
+
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+
+
+
+
+
+
+MariaDB [(none)]> CREATE magasin
+
+
+
+    -> CREATE magasin;
+
+
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'magasin
+
+
+
+CREATE magasin' at line 1
+
+
+
+MariaDB [(none)]> CREATE magasin;
+
+
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'magasin' at line 1
+
+
+
+MariaDB [(none)]> CREATE DATABASE magasin;
+
+
+
+Query OK, 1 row affected (0.00 sec)
+
+
+
+
+
+
+
+MariaDB [(none)]> USE magasin;
+
+
+
+Database changed
+
+
+
+MariaDB [magasin]> CREATE TABLE voitures (id_voiture INT(3) PRIMARY KEY AUTO_INCREMENT NOT NULL, nom VARCHAR (50), categorie VARCHAR (20), reference VARCHAR(20), prix INT(8), stock INT (9), date DATE;
+
+
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+
+
+
+MariaDB [magasin]> CREATE TABLE voitures (id_voiture INT(3) PRIMARY KEY AUTO_INCREMENT NOT NULL, nom VARCHAR (50), categorie VARCHAR (20), reference VARCHAR(20), prix INT(8), stock INT (9), date DATE);
+
+
+
+Query OK, 0 rows affected (0.02 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> INSERT INTO voitures (nom, categorie, reference, prix, stock, date) VALUES  ('Renault Megane', 'Berline', 'R001', '21000', '2150', '2019-01-09');
+
+
+
+Query OK, 1 row affected (0.00 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> INSERT INTO voitures (nom, categorie, reference, prix, stock, date) VALUES  ('Peugeot 308 SW', 'Break', 'P001', '22000', '750', '2019-02-19');
+
+
+
+Query OK, 1 row affected (0.00 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> INSERT INTO voitures (nom, categorie, reference, prix, stock, date) VALUES  ('Tesla Roadster', 'Roadster', 'T001', '172000', '50', '2019-03-12');
+
+
+
+Query OK, 1 row affected (0.01 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> INSERT INTO voitures (nom, categorie, reference, prix, stock, date) VALUES  ('BMW 330e', 'Berline', 'B001', '45000', '1650', '2019-01-18');
+
+
+
+Query OK, 1 row affected (0.01 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> INSERT INTO voitures (nom, categorie, reference, prix, stock, date) VALUES  ('Mercedes Classe E Break', 'Break', 'M001', '57000', '1830', '2018121-20');
+
+
+
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> SHOW * FROM voitures
+
+
+
+    -> SHOW * FROM voitures;
+
+
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '* FROM voitures
+
+
+
+SHOW * FROM voitures' at line 1
+
+
+
+MariaDB [magasin]> SHOW * FROM voitures;
+
+
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '* FROM voitures' at line 1
+
+
+
+MariaDB [magasin]> SELECT * FROM voitures;
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+
+
+
+
+| id_voiture | nom                     | categorie | reference | prix   | stock | date       |
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+
+
+
+
+|          1 | Renault Megane          | Berline   | R001      |  21000 |  2150 | 2019-01-09 |
+
+
+
+|          2 | Peugeot 308 SW          | Break     | P001      |  22000 |   750 | 2019-02-19 |
+
+
+
+|          3 | Tesla Roadster          | Roadster  | T001      | 172000 |    50 | 2019-03-12 |
+
+
+
+|          4 | BMW 330e                | Berline   | B001      |  45000 |  1650 | 2019-01-18 |
+
+
+
+|          5 | Mercedes Classe E Break | Break     | M001      |  57000 |  1830 | 0000-00-00 |
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+
+
+
+
+5 rows in set (0.00 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> SELECT date FROM voitures ORDER BY date;
+
+
+
++------------+
+
+
+
+| date       |
+
+
+
++------------+
+
+
+
+| 0000-00-00 |
+
+
+
+| 2019-01-09 |
+
+
+
+| 2019-01-18 |
+
+
+
+| 2019-02-19 |
+
+
+
+| 2019-03-12 |
+
+
+
++------------+
+
+
+
+5 rows in set (0.00 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> UPDATE voitures SET date='2018-12-20' WHERE id_voiture ='5';
+
+
+
+Query OK, 1 row affected (0.01 sec)
+
+
+
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+
+
+
+
+
+MariaDB [magasin]> SELECT date FROM voitures ORDER BY date;
+
+
+
++------------+
+
+
+
+| date       |
+
+
+
++------------+
+
+
+
+| 2018-12-20 |
+
+
+
+| 2019-01-09 |
+
+
+
+| 2019-01-18 |
+
+
+
+| 2019-02-19 |
+
+
+
+| 2019-03-12 |
+
+
+
++------------+
+
+
+
+5 rows in set (0.00 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> SELECT * FROM voitures;
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+
+
+
+
+| id_voiture | nom                     | categorie | reference | prix   | stock | date       |
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+
+
+
+
+|          1 | Renault Megane          | Berline   | R001      |  21000 |  2150 | 2019-01-09 |
+
+
+
+|          2 | Peugeot 308 SW          | Break     | P001      |  22000 |   750 | 2019-02-19 |
+
+
+
+|          3 | Tesla Roadster          | Roadster  | T001      | 172000 |    50 | 2019-03-12 |
+
+
+
+|          4 | BMW 330e                | Berline   | B001      |  45000 |  1650 | 2019-01-18 |
+
+
+
+|          5 | Mercedes Classe E Break | Break     | M001      |  57000 |  1830 | 2018-12-20 |
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+
+
+
+
+5 rows in set (0.00 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> ALTER TABLE voitures ADD date_vente DATE;
+
+
+
+Query OK, 0 rows affected (0.05 sec)
+
+
+
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+
+
+
+
+
+MariaDB [magasin]> SELECT * FROM voitures;
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+| id_voiture | nom                     | categorie | reference | prix   | stock | date       | date_vente |
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+|          1 | Renault Megane          | Berline   | R001      |  21000 |  2150 | 2019-01-09 | NULL       |
+
+
+
+|          2 | Peugeot 308 SW          | Break     | P001      |  22000 |   750 | 2019-02-19 | NULL       |
+
+
+
+|          3 | Tesla Roadster          | Roadster  | T001      | 172000 |    50 | 2019-03-12 | NULL       |
+
+
+
+|          4 | BMW 330e                | Berline   | B001      |  45000 |  1650 | 2019-01-18 | NULL       |
+
+
+
+|          5 | Mercedes Classe E Break | Break     | M001      |  57000 |  1830 | 2018-12-20 | NULL       |
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+5 rows in set (0.00 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> SELECT * FROM voitures WHERE nom  LIKE '%t%';
+
+
+
++------------+----------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+| id_voiture | nom            | categorie | reference | prix   | stock | date       | date_vente |
+
+
+
++------------+----------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+|          1 | Renault Megane | Berline   | R001      |  21000 |  2150 | 2019-01-09 | NULL       |
+
+
+
+|          2 | Peugeot 308 SW | Break     | P001      |  22000 |   750 | 2019-02-19 | NULL       |
+
+
+
+|          3 | Tesla Roadster | Roadster  | T001      | 172000 |    50 | 2019-03-12 | NULL       |
+
+
+
++------------+----------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+3 rows in set (0.00 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> UPDATE voitures SET date_vente='2019-02-11' WHERE id_voiture ='1';
+
+
+
+Query OK, 1 row affected (0.00 sec)
+
+
+
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+
+
+
+
+
+MariaDB [magasin]> SELECT * FROM voitures;
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+| id_voiture | nom                     | categorie | reference | prix   | stock | date       | date_vente |
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+|          1 | Renault Megane          | Berline   | R001      |  21000 |  2150 | 2019-01-09 | 2019-02-11 |
+
+
+
+|          2 | Peugeot 308 SW          | Break     | P001      |  22000 |   750 | 2019-02-19 | NULL       |
+
+
+
+|          3 | Tesla Roadster          | Roadster  | T001      | 172000 |    50 | 2019-03-12 | NULL       |
+
+
+
+|          4 | BMW 330e                | Berline   | B001      |  45000 |  1650 | 2019-01-18 | NULL       |
+
+
+
+|          5 | Mercedes Classe E Break | Break     | M001      |  57000 |  1830 | 2018-12-20 | NULL       |
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+5 rows in set (0.00 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> UPDATE voitures SET date='2019-02-21' WHERE id_voiture ='2';
+
+
+
+Query OK, 1 row affected (0.00 sec)
+
+
+
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+
+
+
+
+
+MariaDB [magasin]> UPDATE voitures SET date='2019-03-18' WHERE id_voiture ='3';
+
+
+
+Query OK, 1 row affected (0.00 sec)
+
+
+
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+
+
+
+
+
+MariaDB [magasin]> UPDATE voitures SET date_vente='2018-12-22' WHERE id_voiture ='5';
+
+
+
+Query OK, 1 row affected (0.00 sec)
+
+
+
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+
+
+
+
+
+MariaDB [magasin]> UPDATE voitures SET date_vente='2019-02-02' WHERE id_voiture ='4';
+
+
+
+Query OK, 1 row affected (0.01 sec)
+
+
+
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+
+
+
+
+
+MariaDB [magasin]> SELECT * FROM voitures;
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+| id_voiture | nom                     | categorie | reference | prix   | stock | date       | date_vente |
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+|          1 | Renault Megane          | Berline   | R001      |  21000 |  2150 | 2019-01-09 | 2019-02-11 |
+
+
+
+|          2 | Peugeot 308 SW          | Break     | P001      |  22000 |   750 | 2019-02-21 | NULL       |
+
+
+
+|          3 | Tesla Roadster          | Roadster  | T001      | 172000 |    50 | 2019-03-18 | NULL       |
+
+
+
+|          4 | BMW 330e                | Berline   | B001      |  45000 |  1650 | 2019-01-18 | 2019-02-02 |
+
+
+
+|          5 | Mercedes Classe E Break | Break     | M001      |  57000 |  1830 | 2018-12-20 | 2018-12-22 |
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+5 rows in set (0.00 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]> UPDATE voitures SET date_vente='2019-02-27' WHERE id_voiture ='2';
+
+
+
+Query OK, 1 row affected (0.01 sec)
+
+
+
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+
+
+
+
+
+MariaDB [magasin]> UPDATE voitures SET date_vente='2019-03-19' WHERE id_voiture ='3';
+
+
+
+Query OK, 1 row affected (0.00 sec)
+
+
+
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+
+
+
+
+
+MariaDB [magasin]> SELECT * FROM voitures;
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+| id_voiture | nom                     | categorie | reference | prix   | stock | date       | date_vente |
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+|          1 | Renault Megane          | Berline   | R001      |  21000 |  2150 | 2019-01-09 | 2019-02-11 |
+
+
+
+|          2 | Peugeot 308 SW          | Break     | P001      |  22000 |   750 | 2019-02-21 | 2019-02-27 |
+
+
+
+|          3 | Tesla Roadster          | Roadster  | T001      | 172000 |    50 | 2019-03-18 | 2019-03-19 |
+
+
+
+|          4 | BMW 330e                | Berline   | B001      |  45000 |  1650 | 2019-01-18 | 2019-02-02 |
+
+
+
+|          5 | Mercedes Classe E Break | Break     | M001      |  57000 |  1830 | 2018-12-20 | 2018-12-22 |
+
+
+
++------------+-------------------------+-----------+-----------+--------+-------+------------+------------+
+
+
+
+5 rows in set (0.00 sec)
+
+
+
+
+
+
+
+MariaDB [magasin]>

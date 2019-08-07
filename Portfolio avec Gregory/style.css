@@ -1,0 +1,116 @@
+/*   
+Theme Name: Portfolio
+Theme URI: http://localhost/back2/PHP_wf3/Portfolio/wp-content/themes/Portfolio
+Description:Portfolio developpeur Web
+Author: Nassim Amara
+Author URI: http://localhost/back2/PHP_wf3/portfolio
+Version:1.0
+*/
+
+body{
+    background:#abd8d8;
+}
+body 
+a{
+    text-decoration: none !important;
+}
+.hauteur{
+    min-height: 200px;
+    background-color:rgb(9, 64, 128);
+}
+.hauteurr{
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    background-color:rgb(9, 64, 128);
+
+}
+.h-entetes{
+    min-height: 200px;
+}
+.ma-section{
+    min-height: 400px;
+}
+.widget{
+    list-style-type: none !important;
+}
+h1{
+    font-family: 'Permanent Marker', cursive;
+    text-shadow: 2px 2px 2px white;
+}
+.text{
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+}
+.menu ul{
+    color: red;
+    width: 60rem; 
+    list-style-type: none !important;
+}
+
+.menu ul li{
+    display : inline-block;
+    padding-right: 5%;
+}
+.menu ul li a:hover{
+    color: rgb(14, 163, 14);
+}
+.maps{
+    /* height: 2vh !important; */
+    border: 1rem  solid !important;
+    width: 100% !important;
+    height: 100% !important;
+
+}
+.maps iframe{
+    width: 100% ;
+}
+.rs{
+    text-align: center;
+    margin-top: 10rem;
+}
+.menu_footer ul li{
+    display : inline-block;
+    padding-right: 5%;
+    margin-top: 10rem;
+}
+.copy{
+    text-align:center;
+}
+.mes-competences h3{
+    font-size: 60px;
+}
+.mes-competences2{
+    font-family: 'Maiden Orange', cursive;
+    font-size: 30px;
+}
+.mes-competences3 i{
+   font-size: 70px;
+   color:rgb(46, 116, 182);
+}
+h3{
+     font-family: 'Maiden Orange', cursive;
+}
+h2{
+    font-family: 'Akronim', cursive;
+}
+h4{
+    color:white;
+}
+h6{
+        font-size: 20px;
+}
+p{
+    color:white;
+    font-size: 30px;
+}
+.mail{
+    margin-top:100px;
+}
+.ma-section{
+    background: url("https://ak2.picdn.net/shutterstock/videos/33807052/thumb/1.jpg") no-repeat;
+    background-size: cover;
+}
+.container{
+    background-color:grey;
+    border: 4px solid aqua;
+}

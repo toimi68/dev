@@ -1,0 +1,70 @@
+
+{% extends 'layout.html.twig' %}
+
+{% block title %} Boutique - Membre {% endblock %}
+
+
+{% block content %}
+
+
+
+    <h1 class="display-4 text-center">LISTE DES PRODUITS</h1><hr>
+
+ <div class="row m-4">
+
+        <a href="{{ path('admin_produit_add') }}" class="btn btn-primary">Ajouter un produit</a>
+
+    </div> 
+
+     <table class="table table-bordered">
+         <thead>
+            <tr>
+                <th>Photo</th>
+                <th>Id du produit</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Taille</th>
+                <th>Couleur</th>
+                <th>Stock</th>
+                <th>Prix</th>
+                <th colspan="3">Action</th>
+            </tr>
+         </thead>
+            <tbody>
+                {% for pdt in produits %}
+                <tr>
+                <td><img src="{{ asset('photo/' ~ pdt.photo) }}" height="80px" /></td>
+                    <td>{{ pdt.photo }} </td>
+                    <td>{{ pdt.id }} </td>
+                    <td>{{ pdt.titre }} </td>
+                    <td>{{ pdt.description}} </td>
+                    <td>{{ pdt.taille }} </td>
+                    <td>{{ pdt.couleur }} </td>
+
+                    {% if pdt.stock == 0 %}
+                    <td class="text text-danger"><b>{{ pdt.stock }} </b></td>
+                    {% elseif pdt.stock <= 20 %}
+                    <td class="text text-warning"><b>{{ pdt.stock }} </b></td>
+                    {% else %}
+                    <td class="text text-success"><b>{{ pdt.stock }} </b></td>
+                    {% endif %}
+
+                    <td>{{ pdt.prix }}</td>
+                    <td><a href=" {{ path('produit',{'id' : pdt.id } ) }}" target="_blank">
+                    <i class="fas fa-eye"></i></a></td>
+
+                    <td><a href=" {{ path('admin_produit_update',{'id': pdt.id } ) }}" class="text- text-success"><i class="fas fa-edit"></i></a></td>
+
+                    <td><a href="{{ path('admin_produit_delete', {'id' : pdt.id}) }}" onclick="return confirm('Etes-vous sur de vouloir supprimer le produit ?');" class="text text-danger"><i class="fas fa-trash"></i></a></td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+     </table>
+    {% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+{% extends 'layout.html.twig' %}
+
+{# Challenge : Mettre le titre en Majuscule dans le H1,
+               Mettre le prix a 19,00.
+               Mettre Homme si le public c'est m(IF/ELSE)
+#}
+
+{% block content %}
+    <h1 class="display-4 text-center mt-4">DETAIL DU PRODUIT <strong class="text-info">{{ produit.titre | upper }}</strong></h1>
+    <div class="col-lg-6 col-md-12 mx-auto form1">
+        <div class="card h-100">
+    
+            <a href=""><img class="card-img-top" src="{{ asset('photo/' ~ produit.photo) }}" alt=""></a>
+    
+            <div class="card-body text-center">
+                <h4 class="card-title text-center">
+                    <a href="" class="alert-link text-info">{{ produit.titre }}</a>
+                </h4>
+                <hr>
+                <h5 class="text-center">{{ produit.prix | number_format('2',',','') }}</h5>
+                <hr>
+                <p class="card-text text-center">{{produit.description}} </p>
+                <hr>
+                <p class="card-text text-center"> {{produit.taille}} </p>
+                <hr>
+                <p class="card-text text-center"> {{produit.public}} <hr>
+                
+                <p class="card-text text-center">
+
+                {% if produit.public == 'm' %}
+                    Homme
+                {% elseif produit.public == 'f' %}
+                    Femme
+                {% else %}
+                    Homme et Femme
+                {% endif %}                           
+                </p> <hr>
+                <p class="card-text text-center"> {{produit.couleur}} </p><hr>
+
+
+
+
+                <a href="{{ path('categorie', {'cat' : produit.categorie } ) }}"  class="alert-link text-dark card-text"><i
+                        class="fas fa-angle-double-left"></i>&nbsp;&nbsp;retour vers la catégorie PULL</a>
+            </div>
+
+            <div class="card-footer text-center">
+
+            {% if produit.stock > 0 %}
+            <div class="form-group">
+            <select class="form-control">
+
+                {% for i in 1..produit.stock if i <= produit.stock %}
+                <option>{{ i }} </options>
+                {% endfor %}
+
+                </select>
+                </div>
+                <button type="button" class="col-md-12 btn btn-dark">Ajouter au panier</button>
+                {% else %}
+                <i style="color:red">Produit en rupture de stock</i>
+                {% endif %}
+            </div>
+    
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+

@@ -1,0 +1,11 @@
+{# {{dump(app.session)}} #}
+
+{% for message in app.session.flashbag.get('success') %}
+{{ message }} <hr>
+{% endfor %}
+
+{% for message in app.session.flashbag.get('error') %}
+{{ message }} <hr>
+{% endfor %}
+
+Hello World!

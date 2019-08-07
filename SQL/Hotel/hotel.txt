@@ -1,0 +1,274 @@
+
+Etudiant@MININT-3IFBDEJ c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 365
+Server version: 10.1.31-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]>
+MariaDB [(none)]> USE hotel
+Database changed
+MariaDB [hotel]> SELECT num_chambre FROM chambre WHERE equipement LIKE '%televiseur%';
+ERROR 1146 (42S02): Table 'hotel.chambre' doesn't exist
+MariaDB [hotel]> USE chambre
+ERROR 1049 (42000): Unknown database 'chambre'
+MariaDB [hotel]> SELECT num_chambre FROM chambres WHERE equipement LIKE '%televiseur%';
++-------------+
+| num_chambre |
++-------------+
+|         111 |
+|         112 |
+|         113 |
+|         114 |
+|         115 |
+|         117 |
+|         118 |
+|         119 |
+|         200 |
++-------------+
+9 rows in set (0.00 sec)
+
+MariaDB [hotel]> SELECT num_chambre, nb_pers FROM chambres;
++-------------+---------+
+| num_chambre | nb_pers |
++-------------+---------+
+|         111 |       1 |
+|         112 |       2 |
+|         113 |       1 |
+|         114 |       1 |
+|         115 |       1 |
+|         116 |       2 |
+|         117 |       1 |
+|         118 |       2 |
+|         119 |       1 |
+|         200 |       1 |
++-------------+---------+
+10 rows in set (0.00 sec)
+
+MariaDB [hotel]> SELECT COUNT(nb_pers) FROM chambres;
++----------------+
+| COUNT(nb_pers) |
++----------------+
+|             10 |
++----------------+
+1 row in set (0.00 sec)
+
+MariaDB [hotel]> SELECT SUM(nb_pers) FROM chambres;
++--------------+
+| SUM(nb_pers) |
++--------------+
+|           13 |
++--------------+
+1 row in set (0.00 sec)
+
+MariaDB [hotel]> SELECT nom, prenom, prix FROM chambres WHERE equipement LIKE '%televiseur%';
+ERROR 1054 (42S22): Unknown column 'nom' in 'field list'
+MariaDB [hotel]> SELECT prix/nb_pers FROM chambres WHERE equipement LIKE '%televiseur%';
++--------------+
+| prix/nb_pers |
++--------------+
+|          150 |
+|           50 |
+|           90 |
+|          110 |
+|          250 |
+|          100 |
+|          150 |
+|          250 |
+|          100 |
++--------------+
+9 rows in set (0.00 sec)
+
+MariaDB [hotel]> SELECT prix FROM       chambres;
++------+
+| prix |
++------+
+|  150 |
+|  100 |
+|   90 |
+|  110 |
+|  250 |
+|  120 |
+|  100 |
+|  300 |
+|  250 |
+|  100 |
++------+
+10 rows in set (0.00 sec)
+
+MariaDB [hotel]> SELECT prix FROM chambres;
++------+
+| prix |
++------+
+|  150 |
+|  100 |
+|   90 |
+|  110 |
+|  250 |
+|  120 |
+|  100 |
+|  300 |
+|  250 |
+|  100 |
++------+
+10 rows in set (0.00 sec)
+
+MariaDB [hotel]> SELECT AVG(prix/nb_pers) FROM chambres;
++-------------------+
+| AVG(prix/nb_pers) |
++-------------------+
+|               131 |
++-------------------+
+1 row in set (0.00 sec)
+
+MariaDB [hotel]> SELECT AVG(prix/nb_pers) FROM chambres WHERE equipement LIKE '%tv%';
++-------------------+
+| AVG(prix/nb_pers) |
++-------------------+
+|              NULL |
++-------------------+
+1 row in set (0.00 sec)
+
+MariaDB [hotel]> SELECT AVG(prix/nb_pers) FROM chambres WHERE equipement LIKE '%televiseur%';
++--------------------+
+| AVG(prix/nb_pers)  |
++--------------------+
+| 138.88888888888889 |
++--------------------+
+1 row in set (0.00 sec)
+
+MariaDB [hotel]> SELECT num_chambre, num_client FROM reservation WHERE date_entree = '2019-03-05';
+ERROR 1146 (42S02): Table 'hotel.reservation' doesn't exist
+MariaDB [hotel]> SELECT num_chambre, num_client FROM reservations WHERE date_entree = '2019-03-05';
+ERROR 1054 (42S22): Unknown column 'date_entree' in 'where clause'
+MariaDB [hotel]> SELECT num_chambre, num_client FROM reservations WHERE date-arrivee = '2019-03-05';
+ERROR 1054 (42S22): Unknown column 'date' in 'where clause'
+MariaDB [hotel]> SELECT num_chambre, num_client FROM reservations WHERE date-arrive = '2019-03-05';
+ERROR 1054 (42S22): Unknown column 'date' in 'where clause'
+MariaDB [hotel]> SELECT num_chambre, num_client FROM reservations WHERE date_arrive = '2019-03-05';
+Empty set (0.00 sec)
+
+MariaDB [hotel]> SELECT num_chambre, num_client FROM reservations WHERE date_arrive = '2019-03-03';
++-------------+------------+
+| num_chambre | num_client |
++-------------+------------+
+|         111 |         10 |
+|         112 |         11 |
++-------------+------------+
+2 rows in set (0.00 sec)
+
+MariaDB [hotel]> SELECT num_chambre FROM chambres WHERE confort LIKE '%jacuzzi%', prix BETWEEN 80 AND 120.
+    -> SELECT num_chambre, num_client FROM reservations WHERE date_arrive = '2019-03-03';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' prix BETWEEN 80 AND 120.
+SELECT num_chambre, num_client FROM reservations WHERE' at line 1
+MariaDB [hotel]> SELECT num_chambre FROM chambres WHERE prix BETWEEN 80 AND 120, confort LIKE '%jacuzzi%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' confort LIKE '%jacuzzi%'' at line 1
+MariaDB [hotel]> SELECT num_chambre FROM chambres WHERE prix BETWEEN 80 AND 120 AND confort LIKE '%jacuzzi%';
+Empty set (0.00 sec)
+
+MariaDB [hotel]> SELECT num_chambre FROM chambres WHERE prix BETWEEN 120 AND 300 AND confort LIKE '%jacuzzi%';
++-------------+
+| num_chambre |
++-------------+
+|         111 |
+|         119 |
++-------------+
+2 rows in set (0.00 sec)
+
+MariaDB [hotel]> SELECT num_chambre FROM chambres WHERE prix BETWEEN 120 AND 300 AND confort LIKE 'jacuzzi';
+Empty set (0.00 sec)
+
+MariaDB [hotel]> SELECT num_chambre FROM chambres WHERE prix BETWEEN 120 AND 300 AND confort LIKE '%jacuzzi%';
++-------------+
+| num_chambre |
++-------------+
+|         111 |
+|         119 |
++-------------+
+2 rows in set (0.00 sec)
+
+MariaDB [hotel]> SELECT nom, prenom, adresse FROM client WHERE prenom LIKE '%d';
+ERROR 1146 (42S02): Table 'hotel.client' doesn't exist
+MariaDB [hotel]> SELECT nom, prenom, adresse FROM clients WHERE prenom LIKE '%d';
+Empty set (0.00 sec)
+
+MariaDB [hotel]> SELECT nom, prenom, adresse FROM clients WHERE prenom LIKE 'd%';
++---------+---------+---------------+
+| nom     | prenom  | adresse       |
++---------+---------+---------------+
+| chabane | djamila | choisy le roi |
++---------+---------+---------------+
+1 row in set (0.00 sec)
+
+MariaDB [hotel]> SELECT COUNT(num_chambre) FROM chambres WHERE prix BETWEEN 120 AND 300;
++--------------------+
+| COUNT(num_chambre) |
++--------------------+
+|                  5 |
++--------------------+
+1 row in set (0.00 sec)
+
+MariaDB [hotel]> SELECT COUNT(id_chambre) FROM chambres WHERE prix BETWEEN 120 AND 300;
++-------------------+
+| COUNT(id_chambre) |
++-------------------+
+|                 5 |
++-------------------+
+1 row in set (0.00 sec)
+
+MariaDB [hotel]> SELECT nom FROM clients AS c, reservations AS r WHERE date_depart IS NULL AND c.num_client = r.num_client;
+Empty set (0.00 sec)
+
+MariaDB [hotel]> SELECT *
+    -> FROM table1
+    -> INNER JOIN table2 ON table1.id = table2.fk_i
+    -> SELECT COUNT(id_chambre) FROM chambres WHERE prix BETWEEN 120 AND 300;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SELECT COUNT(id_chambre) FROM chambres WHERE prix BETWEEN 120 AND 300' at line 4
+MariaDB [hotel]> SELECT * FROM clients AS c, reservations AS r where c.num_clients = r.num_clients;
+ERROR 1054 (42S22): Unknown column 'c.num_clients' in 'where clause'
+MariaDB [hotel]> SELECT * FROM clients AS c, reservations AS r WHERE c.num_clients = r.num_clients;
+ERROR 1054 (42S22): Unknown column 'c.num_clients' in 'where clause'
+MariaDB [hotel]> SELECT * FROM clients AS c, reservations AS r WHERE c.num_client = r.num_client;
++-----------+------------+---------+---------+---------------+---------+------------+-------------+-------------+-------------+
+| id_client | num_client | nom     | prenom  | adresse       | id_resa | num_client | num_chambre | date_arrive | date_depart |
++-----------+------------+---------+---------+---------------+---------+------------+-------------+-------------+-------------+
+|         1 |         10 | chabane | djamila | choisy le roi |       1 |         10 |         111 | 2019-03-03  | 2019-03-05  |
+|         2 |         11 | ba      | auguste | sucy en brie  |       2 |         11 |         112 | 2019-03-03  | 2019-03-05  |
+|         3 |         12 | amara   | nassim  | vitry         |       4 |         12 |         116 | 2019-03-07  | 2019-03-09  |
+|         4 |         13 | baillet | sylvain | champigny     |       5 |         13 |         113 | 2019-03-12  | 2019-03-13  |
+|         5 |         14 | colussi | iulia   | vitry         |       6 |         14 |         114 | 2019-03-12  | 2019-03-14  |
++-----------+------------+---------+---------+---------------+---------+------------+-------------+-------------+-------------+
+5 rows in set (0.00 sec)
+
+MariaDB [hotel]> SELECT * FROM clients INNER JOIN reservations ON clients.num_client = reservations.num_client;
++-----------+------------+---------+---------+---------------+---------+------------+-------------+-------------+-------------+
+| id_client | num_client | nom     | prenom  | adresse       | id_resa | num_client | num_chambre | date_arrive | date_depart |
++-----------+------------+---------+---------+---------------+---------+------------+-------------+-------------+-------------+
+|         1 |         10 | chabane | djamila | choisy le roi |       1 |         10 |         111 | 2019-03-03  | 2019-03-05  |
+|         2 |         11 | ba      | auguste | sucy en brie  |       2 |         11 |         112 | 2019-03-03  | 2019-03-05  |
+|         3 |         12 | amara   | nassim  | vitry         |       4 |         12 |         116 | 2019-03-07  | 2019-03-09  |
+|         4 |         13 | baillet | sylvain | champigny     |       5 |         13 |         113 | 2019-03-12  | 2019-03-13  |
+|         5 |         14 | colussi | iulia   | vitry         |       6 |         14 |         114 | 2019-03-12  | 2019-03-14  |
++-----------+------------+---------+---------+---------------+---------+------------+-------------+-------------+-------------+
+5 rows in set (0.00 sec)
+
+MariaDB [hotel]> SELECT * FROM clients AS c INNER JOIN reservations AS r WHERE   c.nom_client = r.num_client;
+ERROR 1054 (42S22): Unknown column 'c.nom_client' in 'where clause'
+MariaDB [hotel]> SELECT * FROM clients AS c INNER JOIN reservations AS r WHERE c.num_client = r.num_client;
++-----------+------------+---------+---------+---------------+---------+------------+-------------+-------------+-------------+
+| id_client | num_client | nom     | prenom  | adresse       | id_resa | num_client | num_chambre | date_arrive | date_depart |
++-----------+------------+---------+---------+---------------+---------+------------+-------------+-------------+-------------+
+|         1 |         10 | chabane | djamila | choisy le roi |       1 |         10 |         111 | 2019-03-03  | 2019-03-05  |
+|         2 |         11 | ba      | auguste | sucy en brie  |       2 |         11 |         112 | 2019-03-03  | 2019-03-05  |
+|         3 |         12 | amara   | nassim  | vitry         |       4 |         12 |         116 | 2019-03-07  | 2019-03-09  |
+|         4 |         13 | baillet | sylvain | champigny     |       5 |         13 |         113 | 2019-03-12  | 2019-03-13  |
+|         5 |         14 | colussi | iulia   | vitry         |       6 |         14 |         114 | 2019-03-12  | 2019-03-14  |
++-----------+------------+---------+---------+---------------+---------+------------+-------------+-------------+-------------+
+5 rows in set (0.00 sec)
+
+MariaDB [hotel]>

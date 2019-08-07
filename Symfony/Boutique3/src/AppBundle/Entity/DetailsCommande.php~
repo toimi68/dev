@@ -1,0 +1,54 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DetailsCommande
+ *
+ * @ORM\Table(name="details_commande")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\DetailsCommandeRepository")
+ */
+class DetailsCommande
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="commande_id", type="integer", nullable=false)
+     */
+    private $commandeId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="produit_id", type="integer", nullable=false)
+     */
+    private $produitId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantite", type="integer", nullable=false)
+     */
+    private $quantite;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="prix", type="integer", nullable=false)
+     */
+    private $prix;
+
+
+}
+

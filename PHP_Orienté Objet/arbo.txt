@@ -1,0 +1,67 @@
+Dans le dossier POO:
+    1 dossier 01-classes-objet-instance-visibilité
+          1 fichier Panier.class.php
+
+    1 dossier 02-getteur-setteur-constructeur-visibilité
+          1 fichier Homme.class.php
+          1 fichier Etudiant.class.php
+
+    1 dossier 03-manipulation-type-arguments
+          1 fichier exercice3.class.php
+
+    1 dossier 04-constante-static-self
+          1 fichier Maison.class.php
+          1 fichier Vehicule.class.php
+
+     1 dossier 05-héritage
+          1 fichier Aniaml-class.php
+          1 fichier heritageSens.php
+          1 fichier instance_sans_heritage.php
+          1 fichier Entreprise.class.php
+
+      1 dossier 06-abstraction-finalisation-surchage-trait
+            1 fichier abstraction.php
+            1 fichier finalisation.php
+            1 fichier surcharge.php
+            1 fichier trait.php
+
+      1 dossier 07-méthodes-magiques
+            1 fichier Societe.class.php
+            1 fichier clone.php
+
+      1 dossier 08-classes-existantes
+            1 fichier stdClass.php
+            1 fichier die.php
+            1 fichier exception.php
+            1 fichier iterator.php
+
+      1 dossier 09-namespace
+            1 fichier namespace_commerce.php
+            1 fichier namespace_general.php
+
+      1 dossier 10-autoload
+            1 fichier A.class.php
+            1 fichier B.class.php
+            1 fichier C.class.php
+            1 fichier D.class.php
+            1 fichier appel_autoload.php
+            1 fichier autolad.php
+
+      1 dossier 11-MVC
+            1 fichier panier.php
+
+      1 dossier 12-PDO
+            1 fichier pdo.php
+
+      1 dossier 13-CRUD
+            1 dossier app
+                  1 fichier config.xml
+            1 dossier controller
+                  1 fichier controller.php
+            1 dossier model
+            1 dossier view
+                  1 fichier layout.php
+                  1 fichier donnee.php
+                  1 fichier donnees-form.php
+            1 fichier index.php
+            1 fichier autoload.php

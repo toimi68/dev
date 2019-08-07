@@ -1,0 +1,493 @@
+Welcome to the Doctrine2 entity generator
+
+
+
+
+
+
+
+This command helps you generate Doctrine2 entities.
+
+
+
+First, you need to give the entity name you want to generate.
+
+You must use the shortcut notation like AcmeBlogBundle:Post.
+
+
+
+The Entity shortcut name: AppBundle:Membre
+
+
+
+In AbstractMySQLDriver.php line 103:
+
+
+
+  An exception occured in driver: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Hte inconnu.
+
+
+
+
+
+In PDOConnection.php line 47:
+
+
+
+  SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Hte inconnu.
+
+
+
+
+
+In PDOConnection.php line 43:
+
+
+
+  SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Hte inconnu.
+
+
+
+
+
+In PDOConnection.php line 43:
+
+
+
+  PDO::__construct(): php_network_getaddresses: getaddrinfo failed: Hte inconnu.
+
+
+
+
+
+doctrine:generate:entity [--entity [ENTITY]] [--fields FIELDS] [--format FORMAT] [-h|--help] [-q|--quiet] [-v|vv|vvv|--verbose] [-V|--version] [--ansi] [--no-ansi] [-n|--no-interaction] [-e|--env ENV] [--no-debug] [--] <command> [<entity>]
+
+
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3> php bin/console doctrine:generate:entity
+
+
+
+
+
+  Welcome to the Doctrine2 entity generator
+
+
+
+
+
+
+
+This command helps you generate Doctrine2 entities.
+
+
+
+First, you need to give the entity name you want to generate.
+
+You must use the shortcut notation like AcmeBlogBundle:Post.
+
+
+
+The Entity shortcut name: AppBundle:Membre
+
+
+
+Determine the format to use for the mapping information.
+
+
+
+Configuration format (yml, xml, php, or annotation) [annotation]:
+
+
+
+Instead of starting with a blank entity, you can add some fields now.
+
+Note that the primary key will be added automatically (named id).
+
+
+
+Available types: array, simple_array, json_array, object,
+
+boolean, integer, smallint, bigint, string, text, datetime, datetimetz,
+
+date, time, decimal, float, binary, blob, guid.
+
+
+
+New field name (press <return> to stop adding fields): pseudo
+
+Field type [string]:
+
+Field length [255]: 20
+
+Is nullable [false]:
+
+Unique [false]:
+
+
+
+New field name (press <return> to stop adding fields): mdp
+
+Field type [string]:
+
+Field length [255]: 150
+
+Is nullable [false]:
+
+Unique [false]:
+
+
+
+New field name (press <return> to stop adding fields): nom
+
+Field type [string]:
+
+Field length [255]: 20
+
+Is nullable [false]:
+
+Unique [false]:
+
+
+
+New field name (press <return> to stop adding fields): prenom
+
+Field type [string]:
+
+Field length [255]: 20
+
+Is nullable [false]:
+
+Unique [false]:
+
+
+
+New field name (press <return> to stop adding fields): email
+
+Field type [string]:
+
+Field length [255]: 50
+
+Is nullable [false]:
+
+Unique [false]:
+
+
+
+New field name (press <return> to stop adding fields): civilite
+
+Field type [string]:
+
+Field length [255]: 1
+
+Is nullable [false]:
+
+Unique [false]:
+
+
+
+New field name (press <return> to stop adding fields): ville
+
+Field type [string]:
+
+Field length [255]: 20
+
+Is nullable [false]:
+
+Unique [false]:
+
+
+
+New field name (press <return> to stop adding fields): codePostal
+
+Field type [string]: integer
+
+Is nullable [false]:
+
+Unique [false]:
+
+
+
+New field name (press <return> to stop adding fields): adresse
+
+Field type [string]:
+
+Field length [255]: 50
+
+Is nullable [false]:
+
+Unique [false]:
+
+
+
+New field name (press <return> to stop adding fields): statut
+
+Field type [string]: integer
+
+Is nullable [false]:
+
+Unique [false]:
+
+
+
+New field name (press <return> to stop adding fields):
+
+
+
+
+
+  Entity generation
+
+
+
+
+
+  created .\src\AppBundle/Entity/Membre.php
+
+> Generating entity class C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3\src\AppBundle\Entity\Membre.php: OK!
+
+> Generating repository class C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3\src\AppBundle\Repository\MembreRepository.php: OK!
+
+
+
+
+
+  Everything is OK! Now get to work :).
+
+
+
+
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3> php bin/console doctrine:shema:update --dump-sql
+
+
+
+
+
+  There are no commands defined in the "doctrine:shema" namespace.
+
+
+
+  Did you mean one of these?
+
+      doctrine
+
+      doctrine:cache
+
+      doctrine:database
+
+      doctrine:generate
+
+      doctrine:mapping
+
+      doctrine:query
+
+      doctrine:schema
+
+
+
+
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3> php bin/console doctrine:shcema:update --dump-sql
+
+
+
+
+
+  There are no commands defined in the "doctrine:shcema" namespace.
+
+
+
+  Did you mean one of these?
+
+      doctrine
+
+      doctrine:cache
+
+      doctrine:database
+
+      doctrine:generate
+
+      doctrine:mapping
+
+      doctrine:query
+
+      doctrine:schema
+
+
+
+
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3> php bin/console doctrine:schema:update --dump-sql
+
+
+
+In AnnotationException.php line 69:
+
+
+
+  [Creation Error] The annotation @ORM\Column declared on property AppBundle\Entity\Produit::$id does not have a prop
+
+  erty named "nullabla". Available properties: name, type, length, precision, scale, unique, nullable, options, colum
+
+  nDefinition
+
+
+
+
+
+doctrine:schema:update [--complete] [--dump-sql] [-f|--force] [--em [EM]] [-h|--help] [-q|--quiet] [-v|vv|vvv|--verbose] [-V|--version] [--ansi] [--no-ansi] [-n|--no-interaction] [-e|--env ENV] [--no-debug] [--] <command>
+
+
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3> php bin/console doctrine:schema:update --dump-sql
+
+
+
+In AbstractPlatform.php line 423:
+
+
+
+  Unknown database type enum requested, Doctrine\DBAL\Platforms\MySqlPlatform may not support it.
+
+
+
+
+
+doctrine:schema:update [--complete] [--dump-sql] [-f|--force] [--em [EM]] [-h|--help] [-q|--quiet] [-v|vv|vvv|--verbose] [-V|--version] [--ansi] [--no-ansi] [-n|--no-interaction] [-e|--env ENV] [--no-debug] [--] <command>
+
+
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3> php bin/console doctrine:schema:update --dump-sql
+
+ALTER TABLE membre MODIFY id_membre INT NOT NULL;
+
+DROP INDEX pseudo ON membre;
+
+ALTER TABLE membre DROP PRIMARY KEY;
+
+ALTER TABLE membre ADD password VARCHAR(150) NOT NULL, ADD codePostal INT NOT NULL, DROP mdp, DROP code_postal, CHANGE id_membre id INT AUTO_INCREMENT NOT NULL, CHANGE pseudo username VARCHAR(20) NOT NULL;
+
+ALTER TABLE membre ADD PRIMARY KEY (id);
+
+ALTER TABLE produit CHANGE description description VARCHAR(20) NOT NULL, CHANGE photo photo VARCHAR(255) NOT NULL, CHANGE prix prix DOUBLE PRECISION NOT NULL;
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3> php bin/console doctrine:schema:update --force
+
+Updating database schema...
+
+
+
+In AbstractMySQLDriver.php line 115:
+
+
+
+  An exception occurred while executing 'ALTER TABLE membre ADD password VARCHAR(150) NOT NULL, ADD codePostal INT NO
+
+  T NULL, DROP mdp, DROP code_postal, CHANGE id_membre id INT AUTO_INCREMENT NOT NULL, CHANGE pseudo username VARCHAR
+
+  (20) NOT NULL':
+
+
+
+  SQLSTATE[42000]: Syntax error or access violation: 1075 Incorrect table definition; there can be only one auto colu
+
+  mn and it must be defined as a key
+
+
+
+
+
+In PDOConnection.php line 106:
+
+
+
+  SQLSTATE[42000]: Syntax error or access violation: 1075 Incorrect table definition; there can be only one auto colu
+
+  mn and it must be defined as a key
+
+
+
+
+
+In PDOConnection.php line 104:
+
+
+
+  SQLSTATE[42000]: Syntax error or access violation: 1075 Incorrect table definition; there can be only one auto colu
+
+  mn and it must be defined as a key
+
+
+
+
+
+doctrine:schema:update [--complete] [--dump-sql] [-f|--force] [--em [EM]] [-h|--help] [-q|--quiet] [-v|vv|vvv|--verbose] [-V|--version] [--ansi] [--no-ansi] [-n|--no-interaction] [-e|--env ENV] [--no-debug] [--] <command>
+
+
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3> php bin/console doctrine:schema:update --force
+
+Updating database schema...
+
+Database schema updated successfully! "2" queries were executed
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3> php bin/condole doctrine:mapping:import AppBundle\Entity annotation --path=src/AppBundle/Entity
+
+Could not open input file: bin/condole
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3> php bin/console doctrine:mapping:import AppBundle\Entity annotation --path=src/AppBundle/Entity
+
+Importing mapping information from "default" entity manager
+
+  > writing src/AppBundle/Entity/Commande.php
+
+  > writing src/AppBundle/Entity/DetailsCommande.php
+
+  > writing src/AppBundle/Entity/Membre.php
+
+  > writing src/AppBundle/Entity/Produit.php
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3> php bin/console doctrine:mapping:import AppBundle\Entity annotation --path=src/AppBundle/Entity
+
+Importing mapping information from "default" entity manager
+
+  > writing src/AppBundle/Entity/Commande.php
+
+  > writing src/AppBundle/Entity/DetailsCommande.php
+
+  > writing src/AppBundle/Entity/Membre.php
+
+  > writing src/AppBundle/Entity/Produit.php
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3> php bin/condole doctrine:generate:entities AppBundle
+
+Could not open input file: bin/condole
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3> php bin/console doctrine:generate:entities AppBundle
+
+ NOTE: The doctrine:generate:entities command has been deprecated.
+
+       To read more about the differences between anemic and rich models go here http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/tutorials/getting-started.html#adding-behavior-to-entities.
+
+       If you wish to generate your entities, use make:entity --regenerate from MakerBundle instead.
+
+Generating entities for bundle "AppBundle"
+
+  > backing up Commande.php to Commande.php~
+
+  > generating AppBundle\Entity\Commande
+
+  > backing up DetailsCommande.php to DetailsCommande.php~
+
+  > generating AppBundle\Entity\DetailsCommande
+
+  > backing up Membre.php to Membre.php~
+
+  > generating AppBundle\Entity\Membre
+
+  > backing up Produit.php to Produit.php~
+
+  > generating AppBundle\Entity\Produit
+
+PS C:\xampp\htdocs\formation\Back\SYMFONY\Boutique3>

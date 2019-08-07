@@ -1,0 +1,371 @@
+# Translation of Themes - Eighties in French (France)
+# This file is distributed under the same license as the Themes - Eighties package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-02-09 08:07:38+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: fr\n"
+"Project-Id-Version: Themes - Eighties\n"
+
+#. Description of the plugin/theme
+msgid "Hello, my name is Eighties and I am a modern, progressively enhanced theme designed to keep your content front and center. My menu and sidebar are built to stay out of the way until a user wants to see them. When clicked, users get a nice, clean overlay. You can upload a custom header image or select to use the featured image of the post as the header image. Both you and your site's visitors will love me and you can expect updates and future enhancements for years to come (because my maker loves me, too)."
+msgstr "Bonjour, mon nom est Eighties et je suis un thème moderne progressivement amélioré, conçu pour garder votre contenu en avant et au centre. Mon menu et la barre latérale sont conçues pour rester à l'écart jusqu'à ce qu'un utilisateur souhaite les voir. Lorsque l'on clique dessus, les utilisateurs obtiennent une superposition propre. Vous pouvez mettre en ligne une image d'en-tête personnalisée ou sélectionner cette option pour utiliser l'image mise à la une de l'article comme image d'en-tête. Vous et les visiteurs de votre site vont m'aimer, et vous pouvez attendre des mises à jour et améliorations à venir pour les années à venir (car mon créateur m'aime, trop)."
+
+#. Theme Name of the plugin/theme
+msgid "Eighties"
+msgstr "Eighties"
+
+#: inc/template-tags.php:150
+msgid "%s Day Ago"
+msgid_plural "%s Days Ago"
+msgstr[0] "%s jour de ça"
+msgstr[1] "%s jours de ça"
+
+#: search.php:18
+msgid "Results"
+msgstr "Résultats"
+
+#. Template Name of the plugin/theme
+msgid "Portfolio"
+msgstr "Portfolio"
+
+#: inc/template-tags.php:172
+msgid "Just now"
+msgstr "Maintenant"
+
+#: inc/template-tags.php:166
+msgid "%s Minute Ago"
+msgid_plural "%s Minutes Ago"
+msgstr[0] "il y a %s minute"
+msgstr[1] "il y a %d minutes"
+
+#: inc/template-tags.php:158
+msgid "%s Hour Ago"
+msgid_plural "%s Hours Ago"
+msgstr[0] "%s heure de ça"
+msgstr[1] "%s heures de ça"
+
+#: portfolio.php:44
+msgid "Porfolio page."
+msgstr "Page portfolio"
+
+#: portfolio.php:46
+msgid "View Portfolio"
+msgstr "Voir le portfolio"
+
+#: inc/template-tags.php:100
+msgid "Your comment is awaiting moderation."
+msgstr "Votre commentaire est en attente de validation."
+
+#: inc/template-tags.php:91
+msgid "%s"
+msgstr "%s"
+
+#: inc/template-tags.php:82
+msgid "Pingback:"
+msgstr "Ping :"
+
+#: inc/template-tags.php:57
+msgctxt "Previous post link"
+msgid "%title"
+msgstr "%title"
+
+#: inc/template-tags.php:58
+msgctxt "Next post link"
+msgid "%title"
+msgstr "%title"
+
+#: inc/template-tags.php:54
+msgid "Post navigation"
+msgstr "Navigation d'article"
+
+#: inc/template-tags.php:31
+msgid "Newer Posts"
+msgstr "Articles plus récents"
+
+#: inc/template-tags.php:27
+msgid "Older Posts"
+msgstr "Articles plus anciens"
+
+#: inc/extras.php:205
+msgid "(Untitled)"
+msgstr "(Sans titre)"
+
+#: inc/template-tags.php:23
+msgid "Posts navigation"
+msgstr "Navigation des articles"
+
+#: inc/jetpack.php:39
+msgid "Load More"
+msgstr "Charger la suite"
+
+#: inc/extras.php:137 searchform.php:14
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Recherche&hellip;"
+
+#: inc/extras.php:136 searchform.php:13
+msgctxt "label"
+msgid "Search for:"
+msgstr "Recherche :"
+
+#: inc/extras.php:92
+msgid "Page %s"
+msgstr "Page %s"
+
+#: inc/customizer.php:54
+msgid "Featured Image"
+msgstr "Image en avant"
+
+#: inc/customizer.php:53
+msgid "Header Image"
+msgstr "Image d'en-tête"
+
+#: inc/customizer.php:36
+msgid "For singular items (e.g. posts, pages) you can select to display the default header image or the featured image of the item."
+msgstr "Pour les éléments simples (Ex : articles, pages) vous pouvez choisir d'afficher l'image d'en-tête par défaut ou l'image en avant de l'élément"
+
+#: inc/compatibility.php:40 inc/compatibility.php:52 inc/compatibility.php:67
+msgid "Eighties requires at least WordPress version 3.6. You are running version %s. Please upgrade and try again."
+msgstr "Eighties requiert WordPress 3.6. Vous utiliser la version %s. Merci de mettre à jour et d'essayer à nouveau"
+
+#: inc/customizer.php:49
+msgid "Image Displays:"
+msgstr "Affichage d'image :"
+
+#: inc/customizer.php:35
+msgid "Singular Header"
+msgstr "En-tête singulier"
+
+#: header.php:40
+msgid "Skip to content"
+msgstr "Aller au contenu"
+
+#: header.php:33
+msgid "Menu"
+msgstr "Menu"
+
+#. Translators: If there are characters in your language that are not supported
+#. by Open Sans, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:179
+msgctxt "Open Sans font: on or off"
+msgid "on"
+msgstr "on"
+
+#. Translators: If there are characters in your language that are not supported
+#. by Raleway, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:159
+msgctxt "Varela Round font: on or off"
+msgid "on"
+msgstr "on"
+
+#. Translators: If there are characters in your language that are not supported
+#. by Righteous, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:139
+msgctxt "Righteous font: on or off"
+msgid "on"
+msgstr "on"
+
+#: functions.php:117
+msgid "Widget area for the footer. If no widgets are provided, this footer will not appear."
+msgstr "Zone de widget du pied. S'il n'y a pas de widgets, elle ne s'affichera pas."
+
+#: functions.php:115
+msgid "Footer"
+msgstr "Pied de page"
+
+#: functions.php:106
+msgid "This sidebar opens as a toggle on the right side of a users browser window. Note that the toggle feature requires JavaScript in order to function. But no need to worry, a plain sidebar will appear if JavaScript does not work. If empty, the sidebar with not display."
+msgstr "Cette barre s'ouvre en se dépliant sur le côté droit de la fenêtre de l'utilisateur. Notez que ceci requiert JavaScript pour fonctionner. Si JavaScript n'est pas activé une barre pleine s'affichera. Si la barre est vide elle ne s'affichera pas."
+
+#: functions.php:104
+msgid "Interactive Sidebar"
+msgstr "Barre interactive"
+
+#: functions.php:69
+msgid "Social Menu"
+msgstr "Menu social"
+
+#: functions.php:68
+msgid "Primary Menu"
+msgstr "Menu principal"
+
+#: footer.php:21
+msgid "Theme: %1$s by %2$s."
+msgstr "Thème %1$s par %2$s"
+
+#: footer.php:19
+msgid "Built with %s"
+msgstr "Construit avec %s"
+
+#: footer.php:19
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: content-portfolio.php:18
+msgctxt "Used between list items, there is a space after the comma."
+msgid ", "
+msgstr ", "
+
+#. translators: used between list items, there is a space after the comma
+#: content-page.php:20 content-single-portfolio.php:31 content-single.php:32
+msgid "Pages:"
+msgstr "Pages :"
+
+#: content-none.php:30
+msgid "It seems we cannot find what you are looking for. Perhaps try a search?"
+msgstr "Il semble que rien ne soit trouvé pour votre recherche."
+
+#: content-none.php:25
+msgid "Sorry, but nothing matched your search terms. Please try again with different keywords."
+msgstr "Désolé, mais rien ne correspond à vos critères."
+
+#: content-none.php:21
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Prêt à publier votre 1er article ? <a href=\"%1$s\">Lancez vous ici</a>."
+
+#: content-none.php:15
+msgid "Nothing Found"
+msgstr "Rien de trouvé"
+
+#. translators: used between list items, there is a space after the comma
+#: content-aside.php:17 content-audio.php:16 content-single.php:19
+#: content-video.php:16
+msgid ", "
+msgstr ", "
+
+#: comments.php:61
+msgid "Newer Comments"
+msgstr "Commentaires plus récents"
+
+#: comments.php:60
+msgid "Older Comments"
+msgstr "Commentaires plus anciens"
+
+#: comments.php:59
+msgid "Comment navigation"
+msgstr "Navigation de commentaire"
+
+#: comments.php:54
+msgid "Comments are closed."
+msgstr "Les commentaires sont fermés."
+
+#: comments.php:38
+msgid "Submit Reply"
+msgstr "Envoyer la réponse"
+
+#: comments.php:37
+msgid "Cancel"
+msgstr "Annuler"
+
+#: comments.php:26
+msgctxt "comments title"
+msgid "One comment"
+msgid_plural "%1$s comments"
+msgstr[0] "Un commentaire"
+msgstr[1] "%1$s commentaires"
+
+#: comments.php:35
+msgid "Leave a reply..."
+msgstr "Laisser une réponse"
+
+#: archive.php:74
+msgid "Archives"
+msgstr "Archives"
+
+#: archive.php:68
+msgid "Projects"
+msgstr "Projets"
+
+#: archive.php:65
+msgid "Chats"
+msgstr "Discussions"
+
+#: archive.php:62
+msgid "Audios"
+msgstr "Audios"
+
+#: archive.php:59
+msgid "Statuses"
+msgstr "Statuts"
+
+#: archive.php:56
+msgid "Links"
+msgstr "Liens"
+
+#: archive.php:53
+msgid "Quotes"
+msgstr "Citations"
+
+#: archive.php:50
+msgid "Videos"
+msgstr "Vidéos"
+
+#: archive.php:47
+msgid "Images"
+msgstr "Images"
+
+#: archive.php:44
+msgid "Galleries"
+msgstr "Galeries"
+
+#: archive.php:41
+msgid "Asides"
+msgstr "Annonces"
+
+#: archive.php:38
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: archive.php:38
+msgid "Year: %s"
+msgstr "Année : %s"
+
+#: archive.php:35
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: archive.php:35
+msgid "Month: %s"
+msgstr "Mois : %s"
+
+#: archive.php:32
+msgid "Day: %s"
+msgstr "Jour : %s"
+
+#: archive.php:29
+msgid "Author: %s"
+msgstr "Auteur : %s"
+
+#: 404.php:19
+msgid "Your request was not found."
+msgstr "Votre requête n'a pas été trouvée"
+
+#: 404.php:24
+msgid "Perhaps try a search?"
+msgstr "Essayer une recherche ?"
+
+#: 404.php:17
+msgid "404"
+msgstr "404"
+
+#. Author URI of the plugin/theme
+msgid "http://kopepasah.com/"
+msgstr "http://kopepasah.com/"
+
+#. Author of the plugin/theme
+msgid "Justin Kopepasah"
+msgstr "Justin Kopepasah"
+
+#. Theme URI of the plugin/theme
+msgid "http://eighties.me"
+msgstr "http://eighties.me"

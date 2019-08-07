@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Lien Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>01 AJAX GET</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-4 text-center">01 AJAX GET</h1>
+
+        <div id="demo" class="col-md-8 offset-md-2 alert alert-success"></div>
+
+        <button type="button" id="action" class="col-md-4 offset-md-4 btn btn-dark text-center">Charger fichier txt</button>
+    </div>
+
+    <!-- CDN Jquery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+        <script>
+            // on séléctionne le DOM auquel on associe la méthode 'ready' qui execute la fonction une fois que le DOM sera chargé complétement
+        $(document).ready(function(){
+            // on séléctionne le bouton id 'action' auquel on associe l'événement click,pour chaque click, on éxécute la fonction anonyme 
+            $('#action').click(function(){
+                // 'ajax' est une méthode jquery qui permet d'envoyer des requetes AJAX en HTTP grce à l'objet Javascript XMLHttpRequest (objet permettant les requêtes HTTP) 
+                $.ajax({
+                    url : "ajax-info.txt", // URL de destination de la requete
+                    dataType : "text", // type de données attendu
+                    // en cas de succés, la fonction anonyme s'éxecute : 
+                    // il y a toujours 2 requètes AJAX : une allée et une retour
+                    // le resultat de la requete  retour se trouve dans l'objet représenté par 'data'
+                    success : function(data) { 
+                       $('#demo').html(data); // on selectionne la div id 'demo' auquel on accroche le résultat de la requete AJAX, donc le contenu du fichier txt
+                    }
+                });
+            });
+        });
+        </script>
+</body>
+</html>

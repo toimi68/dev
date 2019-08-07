@@ -1,0 +1,222 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1036{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red255\green0\blue0;\red0\green77\blue187;\red0\green176\blue80;}
+{\*\generator Riched20 10.0.17134}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs24\lang12 Formulaire : \par
+\cf0\f1\fs22\par
+dans \cf1 adminController \cf0 on supprime \par
+\par
+        $produit -> setReference('XXX');\par
+        $produit -> setCategorie('pull');\par
+        $produit -> setPublic('m');\par
+        $produit -> setPrix('25.99');\par
+        $produit -> setStock('150');\par
+        $produit -> setTitre('Pull marini\'e8re');\par
+        $produit -> setPhoto('marini\'e8re.jpg');\par
+        $produit -> setDescription('Super pull fa\'e7on bretonne.jpg');\par
+        $produit -> setTaille('L');\par
+        $produit -> setCouleur('blanc et bleu');\par
+\par
+\'e0 la place on met : $form =$this -> createForm(ProduitType::class, $produit); (qui va permettre de r\'e9cup\'e9rer un objet pour g\'e9n\'e9rer le formulaire)\par
+\par
+dans \cf1 AdminController\cf0  on rajoute : \par
+use AppBundle\\Form\\ProduitType; // permet de faire le lien avec l'objet au dessus\par
+\par
+\cf2 // a ce stade le formulaire n'est pas dans ma vue.... du coup on fait : \cf0\par
+\par
+$params = array(\par
+'produitForm' =>$form ->createView()\par
+); // createView() permet de g\'e9n\'e9rer la partie visuel (HTML) du formulaire\par
+\par
+puis on va dans notre vue \cf1 (formProduit.html.twig) \cf0 on rajoute :\par
+\par
+\{% extends 'layout.html.twig' %\}\par
+\par
+\{% block title %\} Boutique - formulaire produit \{% endblock %\}\par
+\par
+    <h1>Ajouter un produit</h1>\par
+\par
+    \{\{ form(produitForm) \}\}\par
+\{% endblock %\}\par
+\par
+dans \cf1 adminController\cf0  on met en commentaire le $em ->flush (ligne 50)\par
+\par
+\cf2 dans notre vue,on habille le formulaire :\par
+\cf0\par
+\cf3 form_row sert \'e0 3 infos :  le label, le champs et les messages d'erreur\cf0\par
+\par
+on va ds \cf1 config.yml \cf0 (app/config/config.yml) et on rajoute dans le twig : \par
+\par
+form_themes : form_themes: - 'bootstrap_4.html.twig'\par
+\par
+On va dans "\cf1 produitType.php\cf0 " on rajoute le button submit dans buildForm:\par
+\par
+ ->add('Enregistrer', SubmitType::class); pour utiliser la classe,on utilise un USE du coup on rajoute le USE en haut...\par
+\par
+use Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType;\par
+\par
+On va dans \cf1 'adminController\cf0 ' on rajoute \par
+\par
+$form -> handRequest($request); // va lier definitivement l'objet $produit au formulaire, Elle permet de traiter les informations en POST\par
+\par
+et ds \cf1 public function adminProduitAddAction on rajoute (Request $ request)\par
+\cf0\par
+on rajoute apr\'e8s $form \par
+ if($form -> isSubmitted() && $form -> isValid()) \{\par
+            \par
+        \}\par
+\par
+on remet le $em(qui \'e9tait en commentaire) on rajoute le message suivant : \par
+\par
+$request -> getSession() -> getFlashBag() -> add('success', 'le produit ' . $produit -> getId() . ' a bien \'e9t\'e9 ajout\'e9 !');\par
+\par
+        return $this ->redirectToRoute('admin_produit');\par
+\par
+on va dans la page layout.html.twig qui va afficher tte les vues : boutique3/app/ressources/view\par
+on rajoute :\par
+ \{% for message in app.session.flashbag.get('success')%\}\par
+            <div class="alert alert-success">\par
+                \{\{ message \}\}\par
+                </div>\par
+            \{% endfor %\}\par
+\par
+            \{% for message in app.session.flashbag.get('errors')%\}\par
+               <div class="alert alert-danger">\par
+                \{\{ message \}\}\par
+                </div>\par
+\tab\tab\tab\{% endfor %\}\par
+\par
+on va dans \cf1\fs24 adminController\cf0\fs22  pour cr\'e9er un formulaire avec un objet pas vide. \par
+Puis on va modifi\'e9 le produit en question . \par
+on rajoute dans public functionadminProduitUpdateAction ($id\fs32 ,  Request $request\fs22 )\par
+\par
+dans  'je recup\'e8re le produit ' ,on rajoute\par
+$form = $this -> createForm(produitType::class, $produit);  //on dit qu'on hydrate le formulaire\par
+\par
+puis dans $params =array(\par
+on rajoute 'produitForm' => $form -> createView()\par
+\par
+dans notre boutique(localhost:8000/admin/produit/update/7....) on aura le champs 7 rempli. A partir de l\'e0 on pourra modifi\'e9 les champs du produit\par
+\par
+on rajoute cel\'e0 a la suite de  '$form = $this -> createForm(produitType::class, $produit); on '\par
+\cf1\fs28 $form ->handleRequest($request); // tr\'e8s important\cf0\fs22\par
+\par
+        if($form -> isSubmitted() && $form -> isValid() )\{\par
+            \par
+            // je l'enregistre \par
+            $em ->persist ($produit); \par
+            $em -> flush();\par
+            \par
+            $request -> getSession() ->getFlashBag() -> add('success', 'Le produit ' . $produit -> getTitre() . ' a bien \'e9t\'e9 modifi\'e9 !');\par
+            return $this -> redirectToRoute('admin_produit');\par
+        \}\par
+\par
+dans \cf1 AdminController \cf0 on rajoute dans UPDATE  $params = array(\par
+'title' => 'Modifier produit' . $produit -> getTitre()\par
+                );\par
+\par
+dans \cf1 AdminController\cf0  on rajoute dans ADD $params=array(\par
+  'title' => 'ajouter un produit' \par
+);\par
+\par
+\par
+ on va dans le formulaire 'produit type' dans public function buildForm (FormBuilderInterface)  $builder, on rajoutera : \par
+use Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType;\par
+use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\par
+use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType;\par
+use Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType;\par
+use Symfony\\Component\\Form\\Extension\\Core\\Type\\MoneyType;\par
+use Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType;\par
+\par
+use Symfony\\Component\\Validator\\Constraints as Assert;\par
+\par
+puis ds le code : \par
+\par
+dans 'reference'  \tab\tab\tab add('reference',TextType::class, array(\par
+                 'required' => false,\par
+                 'constraints' => array(\par
+                     new Assert\\NotBlank(array(\par
+                     'message' => 'Attention, veuillez renseinger ce champs !'\par
+                                         )),\par
+                 \par
+                 //Assert permet de param\'e9trer des contraintes\par
+                 new Assert\\Length(array(\par
+                     'min' => 3,\par
+                     'minMessage' => 'Attention veuillez renseinger min 3 caract\'e8res',\par
+                     'max' => 20,\par
+                     'maxMessage' => 'Attention veuillez renseinger max 20 caract\'e8res',\par
+                                    )),\par
+                                    new Assert\\Regex(array(\par
+                                        'pattern' => '/^[a-zA-Z-_0-9]+$/',\par
+                                        //  'pattern' => '/^[A-Za-z0-9_-]\{5,30\}$/',\par
+                                        'message' => 'Veuillez utiliser les lettres de A \'e0 Z et les chiffres de 0 \'e0 9',\par
+                                    )) \par
+                                            )\par
+                ))\par
+\par
+ainsi de suite pour contr\'f4ler les champs....\par
+\par
+->add('taille', ChoiceType::class, array(\par
+            'choices' => array(\par
+            'XS' => 'xs',\par
+            'S' => 's',\par
+            'M' => 'm',\par
+            'L' => 'l',\par
+            'XL' => 'xl',\par
+            'XXL' => 'xxl'\par
+                            )\par
+        )) \par
+\par
+ // champs select, on l'apellera choise\par
+        ->add('public', ChoiceType::class, array(\par
+            'choices' => array(\par
+                'Homme' => 'm',\par
+                'Femme' => 'f',\par
+                'Homme et Femme' => 'mixte'\par
+            )\par
+        ))\par
+ ->add('stock', IntegerType::class, array(\par
+            'required' => false,\par
+            'constraints' => array(\par
+                new Assert\\Type(array(\par
+                    'type' => 'integer',\par
+                    'message' => 'Veuillez renseigner un chiffre'\par
+                )),\par
+             \par
+            ),\par
+                ))\par
+\par
+ains de suite pour les autres champs \'e0 voir dans la page 'produitType.php\par
+\par
+\par
+\par
+---------- exo --------\par
+\par
+1/ Entity c'est la ligne de commande \par
+2/membreCointroller \par
+\par
+/**\par
+* @Route.........inscription\par
+*\par
+\par
+3/voir membretype.php\par
+$builder...\par
+\par
+4/\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+}
+ 

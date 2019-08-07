@@ -1,0 +1,721 @@
+Setting environment for using XAMPP for Windows.
+Etudiant@MININT-09VIMME c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 91
+Server version: 10.1.31-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> USE societe
+Database changed
+MariaDB [societe]> SHOW TABLES;
++-------------------+
+| Tables_in_societe |
++-------------------+
+| employes          |
++-------------------+
+1 row in set (0.00 sec)
+
+MariaDB [societe]> SELECT service FROM employes;
++---------------+
+| service       |
++---------------+
+| direction     |
+| commercial    |
+| commercial    |
+| production    |
+| secretariat   |
+| comptabilite  |
+| commercial    |
+| direction     |
+| commercial    |
+| commercial    |
+| secretariat   |
+| informatique  |
+| secretariat   |
+| communication |
+| informatique  |
+| informatique  |
+| juridique     |
+| production    |
+| commercial    |
+| assistant     |
+| formation     |
++---------------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT salaire FROM employes;
++---------+
+| salaire |
++---------+
+|    5000 |
+|    2300 |
+|    3550 |
+|    1900 |
+|    1600 |
+|    1900 |
+|    3100 |
+|    4500 |
+|    1900 |
+|    2700 |
+|    1390 |
+|    2000 |
+|    1500 |
+|    1500 |
+|    2250 |
+|    1700 |
+|    3200 |
+|    2550 |
+|    1800 |
+|    1775 |
+|     999 |
++---------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT salaire FROM employes WHERE PRIX BETWEEN 3000 AND 4000;;
+ERROR 1054 (42S22): Unknown column 'PRIX' in 'where clause'
+ERROR: No query specified
+
+MariaDB [societe]> SELECT salaire FROM employes WHERE PRIX BETWEEN 3000 AND 4000;;
+ERROR 1054 (42S22): Unknown column 'PRIX' in 'where clause'
+ERROR: No query specified
+
+MariaDB [societe]> SELECT salaire FROM employes WHERE PRIX BETWEEN 3000 AND 4000;
+ERROR 1054 (42S22): Unknown column 'PRIX' in 'where clause'
+MariaDB [societe]> SELECT salaire FROM employes WHERE prix BETWEEN 3000 AND 4000;
+ERROR 1054 (42S22): Unknown column 'prix' in 'where clause'
+MariaDB [societe]> SELECT prenom,nom FROM employes WHERE salaire BETWEEN 3000 and 4000;
++----------+---------+
+| prenom   | nom     |
++----------+---------+
+| Thomas   | Winter  |
+| Melanie  | Collier |
+| Nathalie | Martin  |
++----------+---------+
+3 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom,prenom,adresse FROM employes WHERE nom LIKE  'c%';
+ERROR 1054 (42S22): Unknown column 'adresse' in 'field list'
+MariaDB [societe]> SELECT nom,prenom FROM employes WHERE nom LIKE  'c%';
++---------+---------+
+| nom     | prenom  |
++---------+---------+
+| Collier | Melanie |
+| Cottet  | Julien  |
+| Chevel  | Daniel  |
++---------+---------+
+3 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT * FROM employes
+    -> SELECT * FROM employes;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SELECT * FROM employes' at line 2
+MariaDB [societe]> SELECT *nom,prenom FROM employes;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'nom,prenom FROM employes' at line 1
+MariaDB [societe]> SELECT nom,prenom FROM employes;
++----------+-------------+
+| nom      | prenom      |
++----------+-------------+
+| Laborde  | Jean-pierre |
+| Gallet   | Clement     |
+| Winter   | Thomas      |
+| Dubar    | Chloe       |
+| Fellier  | Elodie      |
+| Grand    | Fabrice     |
+| Collier  | Melanie     |
+| Blanchet | Laura       |
+| Miller   | Guillaume   |
+| Perrin   | Celine      |
+| Cottet   | Julien      |
+| Vignal   | Mathieu     |
+| Desprez  | Thierry     |
+| Thoyer   | Amandine    |
+| Durand   | Damien      |
+| Chevel   | Daniel      |
+| Martin   | Nathalie    |
+| Lagarde  | Benoit      |
+| Sennard  | Emilie      |
+| Lafaye   | Stephanie   |
+| Gauriau  | Mila        |
++----------+-------------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom,prenom FROM employes WHERE date_embauche > 1980_01_01;
+ERROR 1054 (42S22): Unknown column '1980_01_01' in 'where clause'
+MariaDB [societe]> SELECT nom,prenom FROM employes WHERE date_embauche > 198-_01-01;
+ERROR 1054 (42S22): Unknown column '_01' in 'where clause'
+MariaDB [societe]> SELECT nom, prenom FROM employes WHERE date_embauche > 1980_01_01;
+ERROR 1054 (42S22): Unknown column '1980_01_01' in 'where clause'
+MariaDB [societe]> SELECT nom, prenom FROM employes WHERE date_embauche > 2000_01_01;
+ERROR 1054 (42S22): Unknown column '2000_01_01' in 'where clause'
+MariaDB [societe]> SELECT nom, prenom FROM employes WHERE date_embauche >'1980_01_01';
++----------+-------------+
+| nom      | prenom      |
++----------+-------------+
+| Laborde  | Jean-pierre |
+| Gallet   | Clement     |
+| Winter   | Thomas      |
+| Dubar    | Chloe       |
+| Fellier  | Elodie      |
+| Grand    | Fabrice     |
+| Collier  | Melanie     |
+| Blanchet | Laura       |
+| Miller   | Guillaume   |
+| Perrin   | Celine      |
+| Cottet   | Julien      |
+| Vignal   | Mathieu     |
+| Desprez  | Thierry     |
+| Thoyer   | Amandine    |
+| Durand   | Damien      |
+| Chevel   | Daniel      |
+| Martin   | Nathalie    |
+| Lagarde  | Benoit      |
+| Sennard  | Emilie      |
+| Lafaye   | Stephanie   |
+| Gauriau  | Mila        |
++----------+-------------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom, prenom FROM employes WHERE date_embauche >'2005_01_01';
++----------+-----------+
+| nom      | prenom    |
++----------+-----------+
+| Blanchet | Laura     |
+| Miller   | Guillaume |
+| Perrin   | Celine    |
+| Cottet   | Julien    |
+| Vignal   | Mathieu   |
+| Desprez  | Thierry   |
+| Thoyer   | Amandine  |
+| Durand   | Damien    |
+| Chevel   | Daniel    |
+| Martin   | Nathalie  |
+| Lagarde  | Benoit    |
+| Sennard  | Emilie    |
+| Lafaye   | Stephanie |
+| Gauriau  | Mila      |
++----------+-----------+
+14 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT DISTINCT service FROM employes;
++---------------+
+| service       |
++---------------+
+| direction     |
+| commercial    |
+| production    |
+| secretariat   |
+| comptabilite  |
+| informatique  |
+| communication |
+| juridique     |
+| assistant     |
+| formation     |
++---------------+
+10 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom,prenom FROM employes WHERE nom LIKE  'c%';
++---------+---------+
+| nom     | prenom  |
++---------+---------+
+| Collier | Melanie |
+| Cottet  | Julien  |
+| Chevel  | Daniel  |
++---------+---------+
+3 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom,prenom FROM employes;
++----------+-------------+
+| nom      | prenom      |
++----------+-------------+
+| Laborde  | Jean-pierre |
+| Gallet   | Clement     |
+| Winter   | Thomas      |
+| Dubar    | Chloe       |
+| Fellier  | Elodie      |
+| Grand    | Fabrice     |
+| Collier  | Melanie     |
+| Blanchet | Laura       |
+| Miller   | Guillaume   |
+| Perrin   | Celine      |
+| Cottet   | Julien      |
+| Vignal   | Mathieu     |
+| Desprez  | Thierry     |
+| Thoyer   | Amandine    |
+| Durand   | Damien      |
+| Chevel   | Daniel      |
+| Martin   | Nathalie    |
+| Lagarde  | Benoit      |
+| Sennard  | Emilie      |
+| Lafaye   | Stephanie   |
+| Gauriau  | Mila        |
++----------+-------------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom, prenom FROM employes WHERE date_embauche >'2005_01_01';
++----------+-----------+
+| nom      | prenom    |
++----------+-----------+
+| Blanchet | Laura     |
+| Miller   | Guillaume |
+| Perrin   | Celine    |
+| Cottet   | Julien    |
+| Vignal   | Mathieu   |
+| Desprez  | Thierry   |
+| Thoyer   | Amandine  |
+| Durand   | Damien    |
+| Chevel   | Daniel    |
+| Martin   | Nathalie  |
+| Lagarde  | Benoit    |
+| Sennard  | Emilie    |
+| Lafaye   | Stephanie |
+| Gauriau  | Mila      |
++----------+-----------+
+14 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom,prenom FROM employes FOR services;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'services' at line 1
+MariaDB [societe]> SELECT nom,prenom FROM employes;
++----------+-------------+
+| nom      | prenom      |
++----------+-------------+
+| Laborde  | Jean-pierre |
+| Gallet   | Clement     |
+| Winter   | Thomas      |
+| Dubar    | Chloe       |
+| Fellier  | Elodie      |
+| Grand    | Fabrice     |
+| Collier  | Melanie     |
+| Blanchet | Laura       |
+| Miller   | Guillaume   |
+| Perrin   | Celine      |
+| Cottet   | Julien      |
+| Vignal   | Mathieu     |
+| Desprez  | Thierry     |
+| Thoyer   | Amandine    |
+| Durand   | Damien      |
+| Chevel   | Daniel      |
+| Martin   | Nathalie    |
+| Lagarde  | Benoit      |
+| Sennard  | Emilie      |
+| Lafaye   | Stephanie   |
+| Gauriau  | Mila        |
++----------+-------------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT * FROM employes;
++-------------+-------------+----------+------+---------------+---------------+---------+
+| id_employes | prenom      | nom      | sexe | service       | date_embauche | salaire |
++-------------+-------------+----------+------+---------------+---------------+---------+
+|         350 | Jean-pierre | Laborde  | m    | direction     | 1999-12-09    |    5000 |
+|         388 | Clement     | Gallet   | m    | commercial    | 2000-01-15    |    2300 |
+|         415 | Thomas      | Winter   | m    | commercial    | 2000-05-03    |    3550 |
+|         417 | Chloe       | Dubar    | f    | production    | 2001-09-05    |    1900 |
+|         491 | Elodie      | Fellier  | f    | secretariat   | 2002-02-22    |    1600 |
+|         509 | Fabrice     | Grand    | m    | comptabilite  | 2003-02-20    |    1900 |
+|         547 | Melanie     | Collier  | f    | commercial    | 2004-09-08    |    3100 |
+|         592 | Laura       | Blanchet | f    | direction     | 2005-06-09    |    4500 |
+|         627 | Guillaume   | Miller   | m    | commercial    | 2006-07-02    |    1900 |
+|         655 | Celine      | Perrin   | f    | commercial    | 2006-09-10    |    2700 |
+|         699 | Julien      | Cottet   | m    | secretariat   | 2007-01-18    |    1390 |
+|         701 | Mathieu     | Vignal   | m    | informatique  | 2008-12-03    |    2000 |
+|         739 | Thierry     | Desprez  | m    | secretariat   | 2009-11-17    |    1500 |
+|         780 | Amandine    | Thoyer   | f    | communication | 2010-01-23    |    1500 |
+|         802 | Damien      | Durand   | m    | informatique  | 2010-07-05    |    2250 |
+|         854 | Daniel      | Chevel   | m    | informatique  | 2011-09-28    |    1700 |
+|         876 | Nathalie    | Martin   | f    | juridique     | 2012-01-12    |    3200 |
+|         900 | Benoit      | Lagarde  | m    | production    | 2013-01-03    |    2550 |
+|         933 | Emilie      | Sennard  | f    | commercial    | 2014-09-11    |    1800 |
+|         990 | Stephanie   | Lafaye   | f    | assistant     | 2015-06-02    |    1775 |
+|         991 | Mila        | Gauriau  | f    | formation     | 2017-01-19    |     999 |
++-------------+-------------+----------+------+---------------+---------------+---------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT sexe FROM employes;
++------+
+| sexe |
++------+
+| m    |
+| m    |
+| m    |
+| f    |
+| f    |
+| m    |
+| f    |
+| f    |
+| m    |
+| f    |
+| m    |
+| m    |
+| m    |
+| f    |
+| m    |
+| m    |
+| f    |
+| m    |
+| f    |
+| f    |
+| f    |
++------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom,prenom sexe FROM employes;
++----------+-------------+
+| nom      | sexe        |
++----------+-------------+
+| Laborde  | Jean-pierre |
+| Gallet   | Clement     |
+| Winter   | Thomas      |
+| Dubar    | Chloe       |
+| Fellier  | Elodie      |
+| Grand    | Fabrice     |
+| Collier  | Melanie     |
+| Blanchet | Laura       |
+| Miller   | Guillaume   |
+| Perrin   | Celine      |
+| Cottet   | Julien      |
+| Vignal   | Mathieu     |
+| Desprez  | Thierry     |
+| Thoyer   | Amandine    |
+| Durand   | Damien      |
+| Chevel   | Daniel      |
+| Martin   | Nathalie    |
+| Lagarde  | Benoit      |
+| Sennard  | Emilie      |
+| Lafaye   | Stephanie   |
+| Gauriau  | Mila        |
++----------+-------------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT sexe FROM employes;
++------+
+| sexe |
++------+
+| m    |
+| m    |
+| m    |
+| f    |
+| f    |
+| m    |
+| f    |
+| f    |
+| m    |
+| f    |
+| m    |
+| m    |
+| m    |
+| f    |
+| m    |
+| m    |
+| f    |
+| m    |
+| f    |
+| f    |
+| f    |
++------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT * FROM employes;
++-------------+-------------+----------+------+---------------+---------------+---------+
+| id_employes | prenom      | nom      | sexe | service       | date_embauche | salaire |
++-------------+-------------+----------+------+---------------+---------------+---------+
+|         350 | Jean-pierre | Laborde  | m    | direction     | 1999-12-09    |    5000 |
+|         388 | Clement     | Gallet   | m    | commercial    | 2000-01-15    |    2300 |
+|         415 | Thomas      | Winter   | m    | commercial    | 2000-05-03    |    3550 |
+|         417 | Chloe       | Dubar    | f    | production    | 2001-09-05    |    1900 |
+|         491 | Elodie      | Fellier  | f    | secretariat   | 2002-02-22    |    1600 |
+|         509 | Fabrice     | Grand    | m    | comptabilite  | 2003-02-20    |    1900 |
+|         547 | Melanie     | Collier  | f    | commercial    | 2004-09-08    |    3100 |
+|         592 | Laura       | Blanchet | f    | direction     | 2005-06-09    |    4500 |
+|         627 | Guillaume   | Miller   | m    | commercial    | 2006-07-02    |    1900 |
+|         655 | Celine      | Perrin   | f    | commercial    | 2006-09-10    |    2700 |
+|         699 | Julien      | Cottet   | m    | secretariat   | 2007-01-18    |    1390 |
+|         701 | Mathieu     | Vignal   | m    | informatique  | 2008-12-03    |    2000 |
+|         739 | Thierry     | Desprez  | m    | secretariat   | 2009-11-17    |    1500 |
+|         780 | Amandine    | Thoyer   | f    | communication | 2010-01-23    |    1500 |
+|         802 | Damien      | Durand   | m    | informatique  | 2010-07-05    |    2250 |
+|         854 | Daniel      | Chevel   | m    | informatique  | 2011-09-28    |    1700 |
+|         876 | Nathalie    | Martin   | f    | juridique     | 2012-01-12    |    3200 |
+|         900 | Benoit      | Lagarde  | m    | production    | 2013-01-03    |    2550 |
+|         933 | Emilie      | Sennard  | f    | commercial    | 2014-09-11    |    1800 |
+|         990 | Stephanie   | Lafaye   | f    | assistant     | 2015-06-02    |    1775 |
+|         991 | Mila        | Gauriau  | f    | formation     | 2017-01-19    |     999 |
++-------------+-------------+----------+------+---------------+---------------+---------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom,prenom,sexe FROM employes;
++----------+-------------+------+
+| nom      | prenom      | sexe |
++----------+-------------+------+
+| Laborde  | Jean-pierre | m    |
+| Gallet   | Clement     | m    |
+| Winter   | Thomas      | m    |
+| Dubar    | Chloe       | f    |
+| Fellier  | Elodie      | f    |
+| Grand    | Fabrice     | m    |
+| Collier  | Melanie     | f    |
+| Blanchet | Laura       | f    |
+| Miller   | Guillaume   | m    |
+| Perrin   | Celine      | f    |
+| Cottet   | Julien      | m    |
+| Vignal   | Mathieu     | m    |
+| Desprez  | Thierry     | m    |
+| Thoyer   | Amandine    | f    |
+| Durand   | Damien      | m    |
+| Chevel   | Daniel      | m    |
+| Martin   | Nathalie    | f    |
+| Lagarde  | Benoit      | m    |
+| Sennard  | Emilie      | f    |
+| Lafaye   | Stephanie   | f    |
+| Gauriau  | Mila        | f    |
++----------+-------------+------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom,prenom, FROM employes GROUP services;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM employes GROUP services' at line 1
+MariaDB [societe]> SELECT nom,prenom, FROM employes GROUP service;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM employes GROUP service' at line 1
+MariaDB [societe]> SELECT nom,prenom, services FROM employes;
+ERROR 1054 (42S22): Unknown column 'services' in 'field list'
+MariaDB [societe]> SELECT nom,prenom, servics FROM employes;
+ERROR 1054 (42S22): Unknown column 'servics' in 'field list'
+MariaDB [societe]> SELECT nom,prenom, service FROM employes;
++----------+-------------+---------------+
+| nom      | prenom      | service       |
++----------+-------------+---------------+
+| Laborde  | Jean-pierre | direction     |
+| Gallet   | Clement     | commercial    |
+| Winter   | Thomas      | commercial    |
+| Dubar    | Chloe       | production    |
+| Fellier  | Elodie      | secretariat   |
+| Grand    | Fabrice     | comptabilite  |
+| Collier  | Melanie     | commercial    |
+| Blanchet | Laura       | direction     |
+| Miller   | Guillaume   | commercial    |
+| Perrin   | Celine      | commercial    |
+| Cottet   | Julien      | secretariat   |
+| Vignal   | Mathieu     | informatique  |
+| Desprez  | Thierry     | secretariat   |
+| Thoyer   | Amandine    | communication |
+| Durand   | Damien      | informatique  |
+| Chevel   | Daniel      | informatique  |
+| Martin   | Nathalie    | juridique     |
+| Lagarde  | Benoit      | production    |
+| Sennard  | Emilie      | commercial    |
+| Lafaye   | Stephanie   | assistant     |
+| Gauriau  | Mila        | formation     |
++----------+-------------+---------------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]>  SELECT nom,prenom FROM employes WHERE sexe = 'f';
++----------+-----------+
+| nom      | prenom    |
++----------+-----------+
+| Dubar    | Chloe     |
+| Fellier  | Elodie    |
+| Collier  | Melanie   |
+| Blanchet | Laura     |
+| Perrin   | Celine    |
+| Thoyer   | Amandine  |
+| Martin   | Nathalie  |
+| Sennard  | Emilie    |
+| Lafaye   | Stephanie |
+| Gauriau  | Mila      |
++----------+-----------+
+10 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom, prenom FROM employes WHERE date_embauche <= '2005_01_01';
++---------+-------------+
+| nom     | prenom      |
++---------+-------------+
+| Laborde | Jean-pierre |
+| Gallet  | Clement     |
+| Winter  | Thomas      |
+| Dubar   | Chloe       |
+| Fellier | Elodie      |
+| Grand   | Fabrice     |
+| Collier | Melanie     |
++---------+-------------+
+7 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom,prenom, date_embauche FROM employes WHERE date_embauche <= '2005-01-01';
++---------+-------------+---------------+
+| nom     | prenom      | date_embauche |
++---------+-------------+---------------+
+| Laborde | Jean-pierre | 1999-12-09    |
+| Gallet  | Clement     | 2000-01-15    |
+| Winter  | Thomas      | 2000-05-03    |
+| Dubar   | Chloe       | 2001-09-05    |
+| Fellier | Elodie      | 2002-02-22    |
+| Grand   | Fabrice     | 2003-02-20    |
+| Collier | Melanie     | 2004-09-08    |
++---------+-------------+---------------+
+7 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT prenom,nom,date_embauche FROM employes WHERE date_embauche <='2005-01-01' AND sexe ='f';
++---------+---------+---------------+
+| prenom  | nom     | date_embauche |
++---------+---------+---------------+
+| Chloe   | Dubar   | 2001-09-05    |
+| Elodie  | Fellier | 2002-02-22    |
+| Melanie | Collier | 2004-09-08    |
++---------+---------+---------------+
+3 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom,prenom, service FROM employes;
++----------+-------------+---------------+
+| nom      | prenom      | service       |
++----------+-------------+---------------+
+| Laborde  | Jean-pierre | direction     |
+| Gallet   | Clement     | commercial    |
+| Winter   | Thomas      | commercial    |
+| Dubar    | Chloe       | production    |
+| Fellier  | Elodie      | secretariat   |
+| Grand    | Fabrice     | comptabilite  |
+| Collier  | Melanie     | commercial    |
+| Blanchet | Laura       | direction     |
+| Miller   | Guillaume   | commercial    |
+| Perrin   | Celine      | commercial    |
+| Cottet   | Julien      | secretariat   |
+| Vignal   | Mathieu     | informatique  |
+| Desprez  | Thierry     | secretariat   |
+| Thoyer   | Amandine    | communication |
+| Durand   | Damien      | informatique  |
+| Chevel   | Daniel      | informatique  |
+| Martin   | Nathalie    | juridique     |
+| Lagarde  | Benoit      | production    |
+| Sennard  | Emilie      | commercial    |
+| Lafaye   | Stephanie   | assistant     |
+| Gauriau  | Mila        | formation     |
++----------+-------------+---------------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT DISTINCT nom,prenom, service FROM employes;
++----------+-------------+---------------+
+| nom      | prenom      | service       |
++----------+-------------+---------------+
+| Laborde  | Jean-pierre | direction     |
+| Gallet   | Clement     | commercial    |
+| Winter   | Thomas      | commercial    |
+| Dubar    | Chloe       | production    |
+| Fellier  | Elodie      | secretariat   |
+| Grand    | Fabrice     | comptabilite  |
+| Collier  | Melanie     | commercial    |
+| Blanchet | Laura       | direction     |
+| Miller   | Guillaume   | commercial    |
+| Perrin   | Celine      | commercial    |
+| Cottet   | Julien      | secretariat   |
+| Vignal   | Mathieu     | informatique  |
+| Desprez  | Thierry     | secretariat   |
+| Thoyer   | Amandine    | communication |
+| Durand   | Damien      | informatique  |
+| Chevel   | Daniel      | informatique  |
+| Martin   | Nathalie    | juridique     |
+| Lagarde  | Benoit      | production    |
+| Sennard  | Emilie      | commercial    |
+| Lafaye   | Stephanie   | assistant     |
+| Gauriau  | Mila        | formation     |
++----------+-------------+---------------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT DISTINCT nom,prenom, service FROM employes ORDER BY service;
++----------+-------------+---------------+
+| nom      | prenom      | service       |
++----------+-------------+---------------+
+| Lafaye   | Stephanie   | assistant     |
+| Collier  | Melanie     | commercial    |
+| Gallet   | Clement     | commercial    |
+| Miller   | Guillaume   | commercial    |
+| Perrin   | Celine      | commercial    |
+| Sennard  | Emilie      | commercial    |
+| Winter   | Thomas      | commercial    |
+| Thoyer   | Amandine    | communication |
+| Grand    | Fabrice     | comptabilite  |
+| Blanchet | Laura       | direction     |
+| Laborde  | Jean-pierre | direction     |
+| Gauriau  | Mila        | formation     |
+| Chevel   | Daniel      | informatique  |
+| Durand   | Damien      | informatique  |
+| Vignal   | Mathieu     | informatique  |
+| Martin   | Nathalie    | juridique     |
+| Dubar    | Chloe       | production    |
+| Lagarde  | Benoit      | production    |
+| Cottet   | Julien      | secretariat   |
+| Desprez  | Thierry     | secretariat   |
+| Fellier  | Elodie      | secretariat   |
++----------+-------------+---------------+
+21 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT COUNT (nom),services FROM employes GROUP services;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'services' at line 1
+MariaDB [societe]> SELECT COUNT (nom),services FROM employes GROUP BY services;
+ERROR 1630 (42000): FUNCTION societe.COUNT does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+MariaDB [societe]> SELECT COUNT (nom),service FROM employes GROUP BY services;
+ERROR 1630 (42000): FUNCTION societe.COUNT does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+MariaDB [societe]> SELECT COUNT (nom),service FROM employes GROUP BY service;
+ERROR 1630 (42000): FUNCTION societe.COUNT does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+MariaDB [societe]> SELECT COUNT(nom), service FROM employes GROUP BY service;
++------------+---------------+
+| COUNT(nom) | service       |
++------------+---------------+
+|          1 | assistant     |
+|          6 | commercial    |
+|          1 | communication |
+|          1 | comptabilite  |
+|          2 | direction     |
+|          1 | formation     |
+|          3 | informatique  |
+|          1 | juridique     |
+|          2 | production    |
+|          3 | secretariat   |
++------------+---------------+
+10 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom,prenom, services FROM employes GROUP BY services;
+ERROR 1054 (42S22): Unknown column 'services' in 'field list'
+MariaDB [societe]> SELECT nom,prenom, services FROM employes GROUP BY servics;
+ERROR 1054 (42S22): Unknown column 'services' in 'field list'
+MariaDB [societe]> SELECT nom,prenom, services FROM employes GROUP BY service;
+ERROR 1054 (42S22): Unknown column 'services' in 'field list'
+MariaDB [societe]> SELECT nom,prenom, services FROM employes GROUP BY service;
+ERROR 1054 (42S22): Unknown column 'services' in 'field list'
+MariaDB [societe]> SELECT COUNT(nom),services FROM employes GROUP BY service;
+ERROR 1054 (42S22): Unknown column 'services' in 'field list'
+MariaDB [societe]> SELECT COUNT(nom),service FROM employes GROUP BY service;
++------------+---------------+
+| COUNT(nom) | service       |
++------------+---------------+
+|          1 | assistant     |
+|          6 | commercial    |
+|          1 | communication |
+|          1 | comptabilite  |
+|          2 | direction     |
+|          1 | formation     |
+|          3 | informatique  |
+|          1 | juridique     |
+|          2 | production    |
+|          3 | secretariat   |
++------------+---------------+
+10 rows in set (0.00 sec)
+
+MariaDB [societe]> SELECT nom,prenom , service FROM employes GROUP BY service;
++---------+-------------+---------------+
+| nom     | prenom      | service       |
++---------+-------------+---------------+
+| Lafaye  | Stephanie   | assistant     |
+| Gallet  | Clement     | commercial    |
+| Thoyer  | Amandine    | communication |
+| Grand   | Fabrice     | comptabilite  |
+| Laborde | Jean-pierre | direction     |
+| Gauriau | Mila        | formation     |
+| Vignal  | Mathieu     | informatique  |
+| Martin  | Nathalie    | juridique     |
+| Dubar   | Chloe       | production    |
+| Fellier | Elodie      | secretariat   |
++---------+-------------+---------------+
+10 rows in set (0.00 sec)
+
+MariaDB [societe]>

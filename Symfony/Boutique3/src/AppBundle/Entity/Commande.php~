@@ -1,0 +1,54 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Commande
+ *
+ * @ORM\Table(name="commande")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CommandeRepository")
+ */
+class Commande
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="membre_id", type="integer", nullable=false)
+     */
+    private $membreId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="montant", type="integer", nullable=false)
+     */
+    private $montant;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateEnregistrement", type="datetime", nullable=false)
+     */
+    private $dateenregistrement;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string", length=50, nullable=false)
+     */
+    private $etat;
+
+
+}
+

@@ -1,0 +1,26 @@
+<ul class="heroes">
+ <li [class.selected]="hero === selectedHero" (click)="selectHero(hero)" *ngFor="let hero of heroes">
+   <span class="badge">{{ hero.id }}</span>
+  <!-- [class.selected] les crochets est un lien entre le ts et le html ,les parenthèses c'est l'inverse
+  le champs class de mon selected sera vrai si -->
+  <span class="text">{{ hero.name }}</span>
+   <!-- on fait une concaténation pour afficher l'id et le name -->
+</li>
+ </ul>
+
+
+Nom du héros
+<input type="text" name="heroToAdd" id="heroName" [(ngModel)]="heroToAdd" />
+<button (click)="addHero()">Ajouter un Héros</button>
+<app-hero-details [hero]="selectedHero" *ngIf="selectedHero"></app-hero-details>
+
+
+
+
+<!-- <section *ngIf="selectedHero">
+  <h2>Détails du héros {{ selectedHero.name }} </h2>
+  <div><span>{{ selectedHero.id }} </span> {{ selectedHero.name }} </div>
+</section> -->
+
+
+

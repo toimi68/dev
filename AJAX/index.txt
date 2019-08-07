@@ -1,0 +1,42 @@
+dossier AJAX (asynchronus javascript and XML) mais on devrait plus l'appeler AJAJ ( J pour format JSON)
+  1 dossier 01-ajax-get
+       1 fichier index.html
+       1 fichier ajax-info.txt
+
+HXLHttpRequest permet de récuperer,d'envoyer des requêtes, facilement des données via HTTP.
+
+    1 dossier 02-ajax-insert
+        1 fichier ajax2.js
+        1 fichier ajax2.php
+        1 fichier init.php
+        1 fichier index.php
+
+    1 dossier 03-ajax-delete
+        1 fichier ajax3.js
+        1 fichier ajax3.php
+        1 fichier init.php
+        1 fichier index.php
+        
+    1 dossier 04-ajax-select
+        1 fichier ajax4.js
+        1 fichier ajax4.php
+        1 fichier init.php
+        1 fichier index.php
+
+    1 dossier 05-ajax-select-ID
+        1 fichier ajax5.js
+        1 fichier ajax5.php
+        1 fichier init.php
+        1 fichier index.php
+
+    1 dossier 06-ajax-insert-ALL
+        1 fichier ajax6.js
+        1 fichier ajax6.php
+        1 fichier init.php
+        1 fichier index.php
+
+    1 dossier 07-ajax-insert-ALL
+        1 fichier ajax7.js
+        1 fichier ajax7.php
+        1 fichier init.php
+        1 fichier index.php
