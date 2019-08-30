@@ -53,6 +53,7 @@ if($_POST)
 
     // Exo : Réaliser la requete d'insertion permettant d'insérer un produit dans la table 'produit' (requete préparée)
 
+    // Ajout Produit 
     if(isset($_GET['action']) && $_GET['action'] == 'ajout')
     {
     $data_insert = $bdd->prepare("INSERT INTO produit (reference, categorie, titre, description, couleur, taille, public, photo, prix, stock) VALUES (:reference, :categorie, :titre, :description, :couleur, :taille, :public, :photo, :prix, :stock)");
