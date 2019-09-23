@@ -39,7 +39,7 @@ class PDO
 }
 
 - Une classe est un regroupement d'information / de données que l'on peut comparer à un plan de construction
-- Pour pouvoir utuliser les données déclarées dans la classe, nous devons instancier la classe 'Panier' afin d'en créer un objet, c'est à dire u, exemplaire de la classe. L'objet permet d'atteindre et d'utiliser des fonctionnalités déclarées dans la classe
+- Pour pouvoir utIliser les données déclarées dans la classe, nous devons instancier la classe 'Panier' afin d'en créer un objet, c'est à dire u, exemplaire de la classe. L'objet permet d'atteindre et d'utiliser des fonctionnalités déclarées dans la classe
 
 il faudra au préalable créer variable de la class, exemple ici : 
 

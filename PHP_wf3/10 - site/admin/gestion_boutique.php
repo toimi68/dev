@@ -81,7 +81,7 @@ if($_POST)
 
     foreach($_POST as $key => $value)
     {
-         if($key != 'photo_actuelle')
+         if($key != 'photo_actuelle') // on ejecte le champs 'hidden' de la photo
          {
                $data_insert->bindValue(":$key", $value, PDO::PARAM_STR);
          }
