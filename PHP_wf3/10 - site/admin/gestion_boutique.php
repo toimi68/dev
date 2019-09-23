@@ -9,7 +9,7 @@ extract($_GET);
 //     header("Location:" . URL . "connexion.php");
 // }
 
-//---------------SUPRESSION PRODUIT
+//---------------SUPPRESSION PRODUIT
 // on entre dans le IF seulement dans le cas ou l'on a cliqué sur le bouton suppression
 if(isset($_GET['action']) && $_GET['action'] == 'suppression')
 {
@@ -24,7 +24,8 @@ if(isset($_GET['action']) && $_GET['action'] == 'suppression')
  
 
     $validate .= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>Le produit N° <strong>$id_produit</strong> a bien été supprimer !! </div>";
-}
+
+}// fin requete suppression
 
 //---------------ENREGISTREMENT PRODUIT
 if($_POST)
